@@ -114,29 +114,6 @@ var AVObj =
 		return false;
 	},
 
-    /**
-     * Attaches the observer system to any generic object that is not apart of AVObj.
-     * @param object
-     */
-	attachObserverModel:function(object)
-	{
-		if (!object._observers && !object.setObserverScope)
-		{
-			Object.defineProperties (object,
-			                         {
-				                         _observers : {
-					                         value    : {},
-					                         writable : false
-				                         }
-			                         }
-			);
-			object.setObserverScope = AVObj.setObserverScope;
-			object.fireObservers = AVObj.fireObservers;
-			object.addObserver = AVObj.addObserver;
-			object.removeObserver = AVObj.removeObserver;
-		}
-	},
-
 	/**
 	 * Add a duplicate of the same variable without inner children and appends it to the same object.
 	 * @param {Element} n The element to copy.
@@ -228,6 +205,29 @@ var AVObj =
 	},
 
 	/**
+	 * Attaches the AVObj's observer system to any generic object that is not apart of AVObj such as an empty Object or Element.
+	 * @param object
+	 */
+	attachObserverModel:function(object)
+	{
+		if (!object._observers && !object.setObserverScope)
+		{
+			Object.defineProperties (object,
+				{
+					_observers : {
+						value    : {},
+						writable : false
+					}
+				}
+			);
+			object.setObserverScope = AVObj.setObserverScope;
+			object.fireObservers = AVObj.fireObservers;
+			object.addObserver = AVObj.addObserver;
+			object.removeObserver = AVObj.removeObserver;
+		}
+	},
+
+	/**
 	 * Fires off an observer-scope
 	 * @param {String} listenScope The scope you want to call
 	 * @param {Object} argumentsObj The argument you want to fire
@@ -285,6 +285,9 @@ var AVObj =
 	}
 };
 
+/**
+ * Locks the class AVObj so that it cannot be destroyed and prevents it from appearing in any recursion (enumerable).
+ */
 Object.defineProperties (AVObj,
                          {
 	                         _observers : {
