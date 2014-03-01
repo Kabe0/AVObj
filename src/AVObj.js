@@ -1,6 +1,6 @@
 /**
  * User: Ian
- * Date: 09/04/12
+ * Date: 01/03/14
  * Time: 7:15 PM
  * Project: AVObj vs 0.01 - Making JS Simple.
  * Copyright (c) 2014 Ian Carson - LinkedIn http://lnkd.in/9qJWap
