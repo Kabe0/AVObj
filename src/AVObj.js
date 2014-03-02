@@ -147,7 +147,7 @@ var AVObj =
 
 	createObject : function ()
 	{
-		var thisSuper = (this.parent.init ? this.parent.init : this.init);
+		var thisSuper = (this.parent.init );
 
 		return Object.create (this, {
 			parent     : {
@@ -160,8 +160,9 @@ var AVObj =
 			super      : {
 				value : function ()
 				{
-					return thisSuper.apply (this, arguments);
-				}
+					return this.parent.init.apply (this.parent, arguments);
+				},
+				writable : false
 			},
 			_observers : {
 				value    : {},
