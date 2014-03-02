@@ -24,7 +24,7 @@ var NewObject = AVObj.extend();
 
 The command we just wrote uses Object.create() to build us a new object with a prototype connection of all the methods and properties of the object AVObj. It has also provided us with some prebuilt functionality such as a **parent** to access the previous properties and methods (prototype), **super** to call a method's parent method, and **_observers** to append listeners to our object. 
 
-Next lets add some of our own methods and properties to the new object we just created. The first two methods ever created are init and deInit. These will fire when the object is eather created or destroyed.
+Next lets add some of our own methods and properties to the new object we just created. The first two methods ever created are init and deInit. These will fire when the object is either created or destroyed.
 
 ```javascript
 var NewObject = AVObj.extend();
@@ -45,7 +45,7 @@ NewObject.properties =
     }
 };
 ```
-We have bult ourself a complete object, but if you run it you will notice nothing happens. This is because the object has been defined but we have not created any instances of it. To create an instance of the object call we have to add this code below...
+We have built ourselves a complete object, but if you run it you will notice nothing happens. This is because the object has been defined but we have not created any instances of it. To create an instance of the object call we have to add this code below...
 
 ```javascript
 var newInstance = NewObject.create();
