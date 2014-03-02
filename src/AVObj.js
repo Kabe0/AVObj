@@ -147,8 +147,6 @@ var AVObj =
 
 	createObject : function ()
 	{
-		var thisSuper = (this.parent.init );
-
 		return Object.create (this, {
 			parent     : {
 				get        : function()
