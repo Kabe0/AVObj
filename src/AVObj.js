@@ -62,6 +62,8 @@ var AVObj =
      */
     create : function ()
     {
+
+
         var newObj = this.createObject ();
         newObj.init.apply (newObj, arguments);
         return newObj;
@@ -149,16 +151,16 @@ var AVObj =
 	{
 		return Object.create (this, {
 			parent     : {
-				get        : function()
+				get : function()
 				{
-					return this;
-				}.bind(this),
+					return Object.getPrototypeOf(this);
+				},
 				enumerable : false
 			},
 			super      : {
 				value : function ()
 				{
-					return this.parent.init.apply (this.parent, arguments);
+					return this.init.apply (Object.getPrototypeOf(this), arguments);
 				},
 				writable : false
 			},
