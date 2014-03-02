@@ -52,5 +52,11 @@ var newInstance = NewObject.create();
 ```
 You should see the alert we created in myMethod fire letting you know that the object has been constructed.
 
+##Contributing##
+Please don't hesitate to let me know of any issues you have, all issues will be looked at and *hopefully* fixed as soon as I see them!
 
+If you have any new ideas and want to contribute to the projet let me know. The point of this utility was to grow and I am more than willing and happy to see the codebase expanded on!
+
+##License##
+[MIT License](http://www.opensource.org/licenses/mit-license.php)
 
