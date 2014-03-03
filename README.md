@@ -10,6 +10,7 @@ AVObject is a utility for JS projects. This utility is designed to simplify the 
 *   Simple syntax for creating getter/setter properties
 *   Support for the singleton pattern
 *   Parent property access for objects that are extended (prototype access).
+*   Avoid Javascript downfalls with prototype's and never ending loops when accesing parent methods.
 *   User-friendly Observer pattern with built in scoping (Can be attached to basic objects using AVObj.attachObserverModel() method).
 
 > This code is at a very early state of development and is still being improved apon!
