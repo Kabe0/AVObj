@@ -6,7 +6,7 @@ AVObject is a utility for JS projects. This utility is designed to simplify the 
 ##Features of AVObject
 
 *   Based on the Object.create() method for cleaner prototyping
-*   Support for extending and creating objects with ease. [Wiki Info](https://github.com/Kabe0/AVObj/wiki/Inheritance-Problem)
+*   Support for extending and creating objects with ease. [Wiki Info](https://github.com/Kabe0/AVObj/wiki/2.-Inheritance-Problem)
 *   Simple syntax for creating getter/setter properties
 *   Support for the singleton pattern
 *   Parent property access for objects that are extended (prototype access).
