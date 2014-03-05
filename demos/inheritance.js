@@ -9,9 +9,9 @@
  * In addition the tutorial will also show road blocks that may occur in relation to the "parent" property.
  */
 
-
- // New Object inheritance using AVObj
-
+////////////////////////////////////////
+// New Object inheritance using AVObj
+///////////////////////////////////////
 var TestObject = AVObj.extend();
 TestObject.properties =
 {
@@ -66,7 +66,9 @@ testing.member();
 
 
 /*
- // Normal object prototype inheritance with the 'Object.create' operator.
+////////////////////////////////////////
+// Normal object prototype inheritance with the 'Object.create' operator.
+////////////////////////////////////////
 
 var TestObject = Object.create(
 	{
@@ -117,7 +119,9 @@ testing.member();
 */
 
 /*
+////////////////////////////////////////
 // Normal object prototype inheritance with the 'new' operator.
+////////////////////////////////////////
 
 var TestObject = function ()
 {
