@@ -3,17 +3,19 @@ AVObject - The easier way to program in JS
 
 AVObject is a utility for JS projects. This utility is designed to simplify the process of creating prototype objects, reducing the frustration and complexity of building objects with the newer ECMAScript 5 standards.
 
+##News and Updates
+Added new functionality to the Node class such as smart recursing deletion as well as provded better tools for accessing parent methods. Check out the changelog for more info.
+
 ##Features of AVObject
 
 *   Based on the Object.create() method for cleaner prototyping
 *   Support for extending and creating objects with ease. [Wiki Info](https://github.com/Kabe0/AVObj/wiki/2.-Inheritance-Problem)
 *   Simple syntax for creating getter/setter properties
 *   Support for the singleton pattern
+*   Smart Node manipulation for fast development with greatly enhanced functionality.
 *   Parent property access for objects that are extended (prototype access).
 *   Avoid Javascript downfalls with prototype's and never ending loops when accesing parent methods.
 *   User-friendly Observer pattern with built in scoping (Can be attached to basic objects using AVObj.attachObserverModel() method).
-
-> This code is at a very early state of development and is still being improved apon!
 
 ## Quick Start Guide
 
@@ -31,10 +33,13 @@ Next lets add some of our own methods and properties to the new object we just c
 var NewObject = AVObj.extend();
 NewObject.properties = 
 {
-    testVar : "Awesome!", // One of the many ways to define variables in an object.
+    sharedVariable : "Shared between all classes!",     // Defining properties outside of methods will result in that
+                                                        // property being shared between all objects created by the class.
     
     init : function ()  // Optional constructor method!
     {
+        this.testVar = "Awesome!"; // One of the many ways to define variables in an object.
+        
         this.myMethod();
     },
     
@@ -42,7 +47,7 @@ NewObject.properties =
     
     myMethod : function ()  // Test function that will let us know the object is constructed!
     {
-        alert("Constructor called this " + testVar + " method!");
+        alert("Constructor called this " + this.testVar + " method!");
     }
 };
 ```
