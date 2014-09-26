@@ -12,6 +12,7 @@
 ////////////////////////////////////////
 // New Object inheritance using AVObj
 ///////////////////////////////////////
+
 var TestObject = AVObj.extend();
 TestObject.properties =
 {
@@ -31,7 +32,7 @@ FirstOverride.properties =
 {
 	init: function ()
 	{
-		this.super();										// AVObj supports parent init calls by using key word "super".
+		this.super();									// AVObj supports parent init calls by using key word "super".
 		console.log( "secondObject" );
 	},
 
@@ -39,8 +40,7 @@ FirstOverride.properties =
 	{
 		console.log( "secondMember!" );
 
-		this.callParent("member", 1);					// Parent allows for quick access to the previous object
-														// scope and can be stacked while maintaining readability.
+		this.callParent("member", 0);					// callParent allows for quick access to the previous object's methods.
 	}
 };
 
@@ -58,7 +58,7 @@ SecondOverride.properties =
 		console.log( "thirdMember!" );
 		console.log("caketime");
 
-		this.callParent("member", 1);
+		this.callParent("member", 0);
 	}
 };
 
@@ -127,8 +127,8 @@ testing.member();
 var TestObject = function ()
 {
 	console.log( "firstObject" )						// This TestObject function is lost in the process of prototyping.
-	// The only way around this is to manually call another function that
-	// acts as it's own init function.
+														// The only way around this is to manually call another function that
+														// acts as it's own init function.
 };
 TestObject.prototype.member = function ()
 {
@@ -147,9 +147,9 @@ FirstOverride.prototype.member = function ()
 {
 	console.log( "secondMember!" );
 	var object = Object.getPrototypeOf( this );			// Can't use FirstOverride as our object starting point as its
-	// not yet defined.
+														// not yet defined.
 	var object2 = Object.getPrototypeOf( object ); 		// "this" is actually the newly constructed object,
-	// so we have to go back through two prototype objects.
+														// so we have to go back through two prototype objects.
 
 	console.log( object2 );
 	object2.member.apply( this );
@@ -174,5 +174,4 @@ SecondOverride.prototype.member = function ()
 
 var testing = new SecondOverride();
 testing.member();
-
- */
+*/
