@@ -13,6 +13,86 @@
 // New Object inheritance using AVObj
 ///////////////////////////////////////
 
+
+var Vector3 = AVObj.extend();
+Vector3.properties =
+{
+	init : function(x, y, z)
+	{
+		this.position = {x:Number(x), y:Number(y), z:Number(z)};
+	},
+
+	x :
+	{
+		get : function()
+		{
+			return this.position.x;
+		}
+	},
+
+	y :
+	{
+		get : function()
+		{
+			return this.position.y;
+		}
+	},
+
+	z :
+	{
+		get : function()
+		{
+			return this.position.z;
+		}
+	},
+
+	add : {
+		set: function ( newVector )
+		{
+			this.position.x += Number( newVector.x );
+			this.position.y += Number( newVector.y );
+			this.position.z += Number( newVector.z );
+
+			return this;
+		}
+	},
+
+	toString : function()
+	{
+		return this.position.x + "," + this.position.y + "," + this.position.z;
+	}
+};
+
+var firstVector = Vector3.create( 55, 22, 36 );
+var secondVector = Vector3.create( 222, 100, 684 );
+
+firstVector.add = secondVector;
+
+console.log( firstVector.toString() );
+
+
+var FirstClass = AVObj.extend();
+FirstClass.properties =
+{
+	init : function()
+	{
+		this.newValue = "This will be defined for ChildClass instead.";
+		console.log("I am the first init."); // This trace will fire first as super() will call this init.
+	}
+};
+
+var ChildClass = FirstClass.extend();
+ChildClass.properties =
+{
+	init: function()
+	{
+		this.super();
+		console.log("I am the child class");
+	}
+};
+
+ChildClass.create();	// Construct the class to read the traces.
+
 var TestObject = AVObj.extend();
 TestObject.properties =
 {
@@ -56,7 +136,6 @@ SecondOverride.properties =
 	member: function ()
 	{
 		console.log( "thirdMember!" );
-		console.log("caketime");
 
 		this.callParent("member", 0);
 	}
