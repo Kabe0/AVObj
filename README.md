@@ -64,5 +64,7 @@ Please don't hesitate to let me know of any issues you have, all issues will be 
 If you have any new ideas and want to contribute to the projet let me know. The point of this utility was to grow and I am more than willing and happy to see the codebase expanded on!
 
 ##License##
+Copyright (c) 2013-2014 Ian Carson <icarson2@live.ca> - linkedIn <http://lnkd.in/9qJWap>
+You are free to use any AVObj project in any other project (even commercial projects) as long as the copyright header is left intact.
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
