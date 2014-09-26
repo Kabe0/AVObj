@@ -23,7 +23,6 @@ TestObject.properties =
 	member: function ()
 	{
 		console.log( "firstMember!" );
-		console.log( this );
 	}
 };
 
@@ -32,15 +31,16 @@ FirstOverride.properties =
 {
 	init: function ()
 	{
-		FirstOverride.super();								// AVObj supports parent init calls by using key word "super".
+		this.super();										// AVObj supports parent init calls by using key word "super".
 		console.log( "secondObject" );
 	},
 
 	member: function ()
 	{
 		console.log( "secondMember!" );
-		FirstOverride.parent.member.apply( this );			// Parent allows for quick access to the previous object
-															// scope and can be stacked while maintaining readability.
+
+		this.callParent("member", 1);					// Parent allows for quick access to the previous object
+														// scope and can be stacked while maintaining readability.
 	}
 };
 
@@ -49,21 +49,22 @@ SecondOverride.properties =
 {
 	init: function ()
 	{
-		SecondOverride.super();
+		this.super();
 		console.log( "thirdObject" );
 	},
 
 	member: function ()
 	{
 		console.log( "thirdMember!" );
-		SecondOverride.parent.member.apply( this );
+		console.log("caketime");
+
+		this.callParent("member", 1);
 	}
 };
 
 var testing = SecondOverride.create();						// Create auto calls the init function allowing
 															// for object constructors.
 testing.member();
-
 
 /*
 ////////////////////////////////////////
