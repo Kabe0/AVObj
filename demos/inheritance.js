@@ -13,64 +13,6 @@
 // New Object inheritance using AVObj
 ///////////////////////////////////////
 
-
-var Vector3 = AVObj.extend();
-Vector3.properties =
-{
-	init : function(x, y, z)
-	{
-		this.position = {x:Number(x), y:Number(y), z:Number(z)};
-	},
-
-	x :
-	{
-		get : function()
-		{
-			return this.position.x;
-		}
-	},
-
-	y :
-	{
-		get : function()
-		{
-			return this.position.y;
-		}
-	},
-
-	z :
-	{
-		get : function()
-		{
-			return this.position.z;
-		}
-	},
-
-	add : {
-		set: function ( newVector )
-		{
-			this.position.x += Number( newVector.x );
-			this.position.y += Number( newVector.y );
-			this.position.z += Number( newVector.z );
-
-			return this;
-		}
-	},
-
-	toString : function()
-	{
-		return this.position.x + "," + this.position.y + "," + this.position.z;
-	}
-};
-
-var firstVector = Vector3.create( 55, 22, 36 );
-var secondVector = Vector3.create( 222, 100, 684 );
-
-firstVector.add = secondVector;
-
-console.log( firstVector.toString() );
-
-
 var FirstClass = AVObj.extend();
 FirstClass.properties =
 {
