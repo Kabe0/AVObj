@@ -1,7 +1,7 @@
-AVObject - The easier way to program in JS
+AVObject - Designed with scalability in mind.
 =====
 
-AVObject is a utility for JS projects. This utility is designed to simplify the process of creating prototype objects, reducing the frustration and complexity of building objects with the newer ECMAScript 5 standards.
+AVObject is a utility for JavaScript projects. This utility is designed to simplify the process of creating prototype objects, reducing the frustration and complexity of building objects with the newer ECMAScript 5 standards. The utility follows a syntax that partually resembles the Class structure of other languages while maintaining additional functionality related to JavaScript.
 
 ##News and Updates
 Added new functionality to the Node class such as smart recursing deletion as well as provded better tools for accessing parent methods. Check out the changelog for more info.
@@ -9,6 +9,7 @@ Added new functionality to the Node class such as smart recursing deletion as we
 ##Features of AVObject
 
 *   Based on the Object.create() method for cleaner prototyping
+*   Class strutured object building, allowing the ablity to extend other objects.
 *   Support for extending and creating objects with ease. [Wiki Info](https://github.com/Kabe0/AVObj/wiki/2.-Inheritance-Problem)
 *   Simple syntax for creating getter/setter properties
 *   Support for the singleton pattern
