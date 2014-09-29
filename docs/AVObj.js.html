@@ -79,6 +79,9 @@ if ( !Function.prototype.bind )
  */
 var AVObj = null; // Will be created by the method below.
 
+
+var AVObjMacro = function( macroName, operation ){}; // Defined below.
+
 // We do a self calling function in order to hide some variables upon construction.
 (function ()
 {
@@ -100,7 +103,7 @@ var AVObj = null; // Will be created by the method below.
 		 * Create function returns a new extension of the AVObject to any new element. If the object has already been extended
 		 * it will extend the new object along with the old prototype properties. This also returns a new &lt;code>parent&lt;/code> variable
 		 * that can be used to navigate up the prototype creation chain.
-		 * @return {*} Returns a new prototype to a variable.
+		 * @return {AVObj} Returns a new prototype to a variable.
 		 * @method create
 		 * @memberof AVObj
 		 */
@@ -113,6 +116,145 @@ var AVObj = null; // Will be created by the method below.
 		writable:     false,
 		configurable: false
 	};
+
+
+	var macroList = {};
+
+	/**
+	 * Command for extending the {@link AVObj.extend} method with additional macros.
+	 * The operationBefore function has two arguments passed in when called:
+	 * &lt;ol>
+	 *     &lt;li>properties - The new object's properties before it's created.&lt;/li>
+	 *     &lt;li>options - whatever was passed into the macro when defined.&lt;/li>
+	 * &lt;/ol>
+	 *
+	 * After the object is constructed the operationAfter is fired.
+	 * The operationAfter function has two arguments passed in when called:
+	 * &lt;ol>
+	 *     &lt;li>object - The object that was just constructed&lt;/li>
+	 *     &lt;li>options - whatever was passed into the macro when defined.&lt;/li>
+ *     &lt;/ol>
+	 *
+	 * @param {string} macroName - The name of the new macro you want to create.
+	 * @param {function=} operationBefore - The function to call when the macroName is defined.
+	 * @param {function=} operationAfter - The function to call when the macroName is defined and the class object has just been constructed.
+	 * @function  AVObjMacro
+	 */
+	AVObjMacro = function( macroName, operationBefore, operationAfter )
+	{
+		if ( macroList[macroName] == null )
+		{
+			macroList[macroName] = { before:operationBefore, after:operationAfter };
+		}
+		else
+		{
+			console.error(macroName + " Macro is already defined!")
+		}
+	};
+
+	///////////////////////////////
+	//
+	//		Load Object on start macro
+	///////////////////////////////
+	var initOnPageLoad = false;
+
+	AVObjMacro("initOnPageLoad",
+		function( properties, options )
+		{
+			initOnPageLoad = true;
+		},
+		function( object, options )
+		{
+			AVObj._AVLoadList.push( object );
+		}
+	);
+
+	///////////////////////////////
+	//
+	//		Stops an object from being extended.
+	///////////////////////////////
+	AVObjMacro( 'preventExtension',
+		function( properites )
+		{
+			properites._lockExtensions =
+			{
+				value:        true,
+				writable:     false,
+				configurable: false,
+				enumerable:   false
+			};
+		}
+	);
+
+	///////////////////////////////
+	//
+	//		Creates singleton type class.
+	///////////////////////////////
+	AVObjMacro( "generateSingleton",
+		function( properties, options )
+		{
+			properties.create =
+			{
+				value:        function ()
+				{
+					console.error( "Please use singleton constructor 'instance' instead." );
+					return null
+				},
+				writable:     false,
+				configurable: false
+			};
+
+			properties._instance =
+			{
+				value:        null,
+				writable:     true,
+				configurable: false
+			};
+
+			/**
+			 * create a single instance of the object that is defined by its class (Singleton Pattern). Calling this function after the first call will result in a return of an instance instead
+			 * of the creation of another object. If you want multiple instances use create() instead.
+			 */
+			properties.instance =
+			{
+				get: function ()
+				{
+					if ( this._instance == null )
+					{
+						this._instance = this.createFinal();
+						this.init.apply( this._instance, arguments );
+					}
+					return this._instance;
+				}
+			}
+		}
+	);
+
+	///////////////////////////////
+	//
+	//		Creates a static object so no one can create or destroy the object.
+	///////////////////////////////
+	AVObjMacro( "initStaticObject",
+		function( properties )
+		{
+			properties.create =
+			{
+				value:        function ()
+				{
+					console.error( "Cannot create a static object!" );
+					return null
+				},
+				writable:     false,
+				configurable: false
+			};
+			properties.destroy =
+			{
+				value:        function () {console.error( "Cannot destroy a static object!" );},
+				writable:     false,
+				configurable: false
+			};
+		}
+	);
 
 	////////////////////////////////
 	//
@@ -128,19 +270,21 @@ var AVObj = null; // Will be created by the method below.
 		 * Creates the object but does not fire the actual objects constructor. Use &lt;code>create&lt;/code>
 		 * Use this class when you are interested in adding properties and methods for any new class or extended class you want to make.
 		 * if you want to fire it with its constructor.
-		 * @param macros You can set function macro's such as
+		 * @param {object} macros - These macros (bools) can be set to one of the following...
 		 * &lt;ul>
 		 *     &lt;li>generateSingleton&lt;/li>
 		 *     &lt;li>initOnPageLoad&lt;/li>
 		 *     &lt;li>initStaticObject&lt;/li>
 		 *     &lt;li>preventExtension&lt;/li>
 		 * &lt;/ul>
+		 * @param {...Object} interfaces - Defines various interfaces that can be applies to the extend class.
 		 * @see AVObj.create
-		 * @return {*}
+		 * @return {AVObj}
 		 * @memberof AVObj
 		 */
-		extend: function ( macros )
+		extend: function ( macros, interfaces )
 		{
+			var macroName;	// Used in the macroName loop.
 			var newObjectProperties =
 			{
 				parent:          {
@@ -161,88 +305,60 @@ var AVObj = null; // Will be created by the method below.
 				create:          createObject
 			};
 
-			var initOnPageLoad = false;
 
 			if ( macros )
-			{		// Only bother if the user asked for the macro's
-				if ( macros.generateSingleton )
+			{
+				for( macroName in macroList )
 				{
-					newObjectProperties.create =
+					if ( macros[macroName] != null &amp;&amp; macroList[macroName].before != null )
 					{
-						value:        function ()
-						{
-							console.error( "Please use singleton constructor 'instance' instead." );
-							return null
-						},
-						writable:     false,
-						configurable: false
-					};
-
-					newObjectProperties._instance =
-					{
-						value:        null,
-						writable:     true,
-						configurable: false
-					};
-
-					/**
-					 * create a single instance of the object that is defined by its class (Singleton Pattern). Calling this function after the first call will result in a return of an instance instead
-					 * of the creation of another object. If you want multiple instances use create() instead.
-					 */
-					newObjectProperties.instance =
-					{
-						get: function ()
-						{
-							if ( this._instance == null )
-							{
-								this._instance = this.createFinal();
-								this.init.apply( this._instance, arguments );
-							}
-							return newObject._instance;
-						}
+						macroList[macroName].before( newObjectProperties, macros[macroName] );
 					}
-				}
-
-				if ( macros.initOnPageLoad )
-				{
-					initOnPageLoad = true;
-				}
-
-				if ( macros.initStaticObject )
-				{
-					newObjectProperties.create =
-					{
-						value:        function ()
-						{
-							console.error( "Cannot create a static object!" );
-							return null
-						},
-						writable:     false,
-						configurable: false
-					};
-					newObjectProperties.destroy =
-					{
-						value:        function () {console.error( "Cannot destroy a static object!" );},
-						writable:     false,
-						configurable: false
-					};
-				}
-
-				if ( macros.preventExtension )
-				{
-					newObjectProperties._lockExtensions =
-					{
-						value:        true,
-						writable:     false,
-						configurable: false,
-						enumerable:   false
-					};
 				}
 			}
 
+			var interfaceValues = {};
+
+			// Goes through and checks all interfaces to make sure they are defined properly.
+			for( var i = 1; i &lt; arguments.length; i++ )
+			{
+				for( var methodName in arguments[i] )
+				{
+					var method = arguments[i][methodName];
+
+					if ( !interfaceValues[method] )
+					{
+						var argumentString = "";
+						for( var methodArguments in method )
+						{
+							argumentString += methodArguments + " {" + method[methodArguments] + "} ";
+						}
+						interfaceValues[methodName] = function()
+						{
+							console.error("Method - " + methodName + " undefined in interface, with required arguments: " + argumentString);
+						};
+					}
+				}
+			}
+
+			newObjectProperties._interfaces =
+			{
+				value : interfaceValues
+			};
+
 			// Build the object and check if it should add it to the initOnPageLoad queue.
 			var newObject = Object.create( this, newObjectProperties );
-			if ( initOnPageLoad ) AVObj._AVLoadList.push( newObject );
+
+			if ( macros )
+			{
+				for ( macroName in macroList )
+				{
+					if ( macros[macroName] != null &amp;&amp; macroList[macroName].after != null )
+					{
+						macroList[macroName].after( newObject, macros[macroName] );
+					}
+				}
+			}
 
 			// Defines an id'd property for parent referencing.
 			Object.defineProperty( newObject, "_parent" + newObject._extensionCount,
@@ -259,6 +375,7 @@ var AVObj = null; // Will be created by the method below.
 
 		createFinal: function ()
 		{
+			var isDestroyed = false;
 			var newObjectValues =
 			{
 				_extensionCount: {
@@ -336,12 +453,6 @@ var AVObj = null; // Will be created by the method below.
 					configurable: false,
 					enumerable:   false
 				},
-				_isDestroyed:    {
-					value:        false,
-					writable:     true,
-					configurable: false,
-					enumerable:   false
-				},
 				create:          {
 					value:        function ()
 					{
@@ -355,7 +466,7 @@ var AVObj = null; // Will be created by the method below.
 				destroyed:       {
 					value:        function ()
 					{
-						return this._isDestroyed;
+						return isDestroyed;
 					},
 					writable:     true,
 					configurable: false,
@@ -375,19 +486,14 @@ var AVObj = null; // Will be created by the method below.
 				destroy:         {
 					value:        function ()
 					{
-						if ( !this._isDestroyed )
+						if ( !isDestroyed )
 						{
 							this.clearObservers();
 							this.deInit();
 
 							// Prevents any future modifications of _isDestroyed and seal the class from
 							// having other objects attached to it.
-							Object.defineProperty( this, "_isDestroyed", {
-								writable:     false,
-								configurable: false,
-								enumerable:   false,
-								value:        true
-							} );
+							isDestroyed = true;
 							Object.seal( this );
 						}
 					},
@@ -452,6 +558,7 @@ var AVObj = null; // Will be created by the method below.
 		 * };
 		 *
 		 * @member {object} &lt;u>setter&lt;/u>-properties
+		 * @see {@link https://github.com/Kabe0/AVObj/wiki/5.-Getter-Setters | Getter/Setter Example}
 		 * @memberof AVObj
 		 */
 		set properties( objs )
@@ -479,6 +586,15 @@ var AVObj = null; // Will be created by the method below.
 				else
 				{
 					this[obj] = objs[obj];
+				}
+			}
+
+			// Throw's errors if any interface value is missing.
+			for( var methodName in this._interfaces )
+			{
+				if ( this[methodName] == null )
+				{
+					this._interfaces[methodName]();
 				}
 			}
 
@@ -697,13 +813,13 @@ var AVObj = null; // Will be created by the method below.
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Sep 27 2014 03:19:26 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 20:48:48 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

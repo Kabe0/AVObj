@@ -39,6 +39,7 @@
     
 
     
+		
         
 <dt>
     <h4 class="name" id="AVObj"><span class="type-signature"></span>AVObj.create<span class="signature">()</span><span class="type-signature"></span></h4>
@@ -46,7 +47,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         AVObject is used for constructing all objects. (namespace utility);
@@ -109,6 +109,7 @@
     
 </dd>
 
+		
     
     </div>
 
@@ -172,7 +173,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line634">line 634</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line750">line 750</a>
     </li></ul></dd>
     
 
@@ -335,12 +336,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line375">line 375</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line481">line 481</a>
     </li></ul></dd>
     
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/Kabe0/AVObj/wiki/5.-Getter-Setters "> Getter/Setter Example</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -373,7 +381,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Attaches the AVObj's observer system to any generic object that is not apart of AVObj such as an empty Object or Element.
@@ -452,7 +459,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line476">line 476</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line592">line 592</a>
     </li></ul></dd>
     
 
@@ -496,7 +503,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Handles the calling of parent methods. Specify the method name, and number of inherited objects you want to move back to calla given method.
@@ -611,7 +617,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line250">line 250</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -663,12 +669,11 @@
         
             
 <dt>
-    <h4 class="name" id="create"><span class="type-signature">(static) </span>create<span class="signature">()</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name" id="create"><span class="type-signature">(static) </span>create<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="AVObj.html">AVObj</a>}</span></h4>
 
     
 </dt>
 <dd>
-
     
     <div class="description">
         Create function returns a new extension of the AVObject to any new element. If the object has already been extendedit will extend the new object along with the old prototype properties. This also returns a new <code>parent</code> variablethat can be used to navigate up the prototype creation chain.
@@ -704,7 +709,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line72">line 72</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -742,7 +747,7 @@
     </dt>
     <dd>
         
-<span class="param-type">*</span>
+<span class="param-type"><a href="AVObj.html">AVObj</a></span>
 
 
     </dd>
@@ -756,12 +761,11 @@
         
             
 <dt>
-    <h4 class="name" id="extend"><span class="type-signature">(static) </span>extend<span class="signature">(macros)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    <h4 class="name" id="extend"><span class="type-signature">(static) </span>extend<span class="signature">(macros, &hellip;interfaces)</span><span class="type-signature"> &rarr; {<a href="AVObj.html">AVObj</a>}</span></h4>
 
     
 </dt>
 <dd>
-
     
     <div class="description">
         Creates the object but does not fire the actual objects constructor. Use <code>create</code>Use this class when you are interested in adding properties and methods for any new class or extended class you want to make.if you want to fire it with its constructor.
@@ -786,6 +790,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -803,13 +809,59 @@
 
             <td class="type">
             
+                
+<span class="param-type">object</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">You can set function macro's such as<ul>    <li>generateSingleton</li>    <li>initOnPageLoad</li>    <li>initStaticObject</li>    <li>preventExtension</li></ul></td>
+            <td class="description last">These macros (bools) can be set to one of the following...<ul>    <li>generateSingleton</li>    <li>initOnPageLoad</li>    <li>initStaticObject</li>    <li>preventExtension</li></ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>interfaces</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Defines various interfaces that can be applies to the extend class.</td>
         </tr>
 
     
@@ -840,7 +892,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line115">line 115</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line258">line 258</a>
     </li></ul></dd>
     
 
@@ -881,7 +933,7 @@
     </dt>
     <dd>
         
-<span class="param-type">*</span>
+<span class="param-type"><a href="AVObj.html">AVObj</a></span>
 
 
     </dd>
@@ -900,7 +952,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Set an observer to listen to a scope.
@@ -1030,7 +1081,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line528">line 528</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line644">line 644</a>
     </li></ul></dd>
     
 
@@ -1076,7 +1127,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Erases all the observers attached to the object.This method is called automatically on destruction.
@@ -1112,7 +1162,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line605">line 605</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line721">line 721</a>
     </li></ul></dd>
     
 
@@ -1154,7 +1204,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Destroys the given object.Calls deInit of the extended object and AVObj classesas well handles the removal of links.Node this will also seal the object after the deInit is called.
@@ -1190,7 +1239,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line348">line 348</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -1225,7 +1274,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Fires off an observer-scope
@@ -1332,7 +1380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line505">line 505</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line621">line 621</a>
     </li></ul></dd>
     
 
@@ -1376,7 +1424,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Returns the number of observers listening to an event.
@@ -1455,7 +1502,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line557">line 557</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line673">line 673</a>
     </li></ul></dd>
     
 
@@ -1515,7 +1562,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Remove an observer in a scope.
@@ -1645,7 +1691,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line572">line 572</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line688">line 688</a>
     </li></ul></dd>
     
 
@@ -1689,7 +1735,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         A fast way to delete all objects of a certain event.
@@ -1768,7 +1813,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line593">line 593</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line709">line 709</a>
     </li></ul></dd>
     
 
@@ -1810,7 +1855,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Call in any init method to activate the previous classes init method.Use <a href="AVObj.html#callParent">AVObj.callParent</a> if you want to call another overridden member automatically.
@@ -1846,7 +1890,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line280">line 280</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line397">line 397</a>
     </li></ul></dd>
     
 
@@ -1914,13 +1958,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Sep 27 2014 03:19:26 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 20:48:48 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

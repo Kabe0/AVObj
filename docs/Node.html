@@ -37,14 +37,14 @@
     
 
     
+		
         
 <dt>
-    <h4 class="name" id="Node"><span class="type-signature"></span>Node.create<span class="signature">(element)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Node"><span class="type-signature"></span>Node.create<span class="signature">(Element)</span><span class="type-signature"></span></h4>
 
     
 </dt>
 <dd>
-
     
     <div class="description">
         Creates the class Node object to wrap around an Element. Call Page.build to construct a new element.
@@ -81,10 +81,15 @@
 
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>Element</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">element</span>
+
+
             
             </td>
 
@@ -92,7 +97,7 @@
 
             
 
-            <td class="description last">Element to wrap around.</td>
+            <td class="description last">Defines the element that will be encapsulated by the Node class.</td>
         </tr>
 
     
@@ -157,6 +162,7 @@
     
 </dd>
 
+		
     
     </div>
 
@@ -647,7 +653,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Add a list of nodes.
@@ -736,7 +741,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Adds an EventListener but wrapped with the Observer model.
@@ -886,7 +890,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Set an observer to listen to a scope.
@@ -1021,7 +1024,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line528">line 528</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line644">line 644</a>
     </li></ul></dd>
     
 
@@ -1067,7 +1070,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Allows the creation and retrieval of attributes.
@@ -1217,7 +1219,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Constructs a node and appends it to this current node. See Page.build to build a node that won't append to this one.
@@ -1386,7 +1387,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Destroys all node observers attached to this object.
@@ -1457,7 +1457,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Deletes all the nodes inside the object.Any Nodes defined will get automatically destroyed unless nonDestructive is set to truein the main function param.
@@ -1528,7 +1527,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Erases all the observers attached to the object.This method is called automatically on destruction.
@@ -1569,7 +1567,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line605">line 605</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line721">line 721</a>
     </li></ul></dd>
     
 
@@ -1611,7 +1609,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Destroys the given object.Calls deInit of the extended object and AVObj classesas well handles the removal of links.Node this will also seal the object after the deInit is called.
@@ -1652,7 +1649,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line348">line 348</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -1687,7 +1684,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Finds the first child or children's it can find based on nodeName filter.
@@ -1831,7 +1827,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Fires off an observer-scope
@@ -1943,7 +1938,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line505">line 505</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line621">line 621</a>
     </li></ul></dd>
     
 
@@ -1987,7 +1982,6 @@
     
 </dt>
 <dd>
-
     
 
     
@@ -2072,7 +2066,6 @@
     
 </dt>
 <dd>
-
     
 
     
@@ -2157,7 +2150,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Returns the number of observers listening to an event.
@@ -2241,7 +2233,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line557">line 557</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line673">line 673</a>
     </li></ul></dd>
     
 
@@ -2301,7 +2293,6 @@
     
 </dt>
 <dd>
-
     
 
     
@@ -2386,7 +2377,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Used to determine if the node has been appended to the document or if its only being stored as a Javascript object.
@@ -2475,7 +2465,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Alternative to the 'build' command but with the same results.
@@ -2644,7 +2633,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Creates
@@ -2790,7 +2778,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Removes the node from its parent element without destroying the node.
@@ -2861,7 +2848,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Removes an EventListener that was wrapped with the Observer model.
@@ -3011,7 +2997,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Removes all the observers attached to an event.
@@ -3125,7 +3110,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Remove an observer in a scope.
@@ -3260,7 +3244,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line572">line 572</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line688">line 688</a>
     </li></ul></dd>
     
 
@@ -3304,7 +3288,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         A fast way to delete all objects of a certain event.
@@ -3388,7 +3371,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line593">line 593</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line709">line 709</a>
     </li></ul></dd>
     
 
@@ -3430,7 +3413,6 @@
     
 </dt>
 <dd>
-
     
 
     
@@ -3497,7 +3479,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Destroys the given attribute.
@@ -3611,7 +3592,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Call in any init method to activate the previous classes init method.Use <a href="AVObj.html#callParent">AVObj.callParent</a> if you want to call another overridden member automatically.
@@ -3652,7 +3632,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line280">line 280</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line397">line 397</a>
     </li></ul></dd>
     
 
@@ -3712,7 +3692,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         replaces the contents of the node with text.
@@ -3844,7 +3823,6 @@
     
 </dt>
 <dd>
-
     
     <div class="description">
         Trims any space (text nodes) at the start and end of the element.
@@ -3941,13 +3919,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Sep 27 2014 03:19:26 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 20:48:48 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
