@@ -79,8 +79,136 @@ if ( !Function.prototype.bind )
  */
 var AVObj = null; // Will be created by the method below.
 
-
 var AVObjMacro = function( macroName, operation ){}; // Defined below.
+
+if (!Object.prototype.watch)
+{
+	Object.defineProperty(Object.prototype, "watch",
+	{
+		enumerable: false
+		, configurable: true
+		, writable: false
+		, value: function (prop, handler)
+		{
+			var	oldval = this[prop]
+				, newval = oldval
+				, getter = function () {
+					return newval;
+				}
+				, setter = function (val) {
+					oldval = newval;
+					return newval = handler.call(this, prop, oldval, val);
+				}
+				;
+
+			if (delete this[prop])
+			{ // can't watch constants
+				Object.defineProperty(this, prop, {
+					get: getter
+					, set: setter
+					, enumerable: true
+					, configurable: true
+				});
+			}
+		}
+	});
+}
+
+// object.unwatch
+if (!Object.prototype.unwatch)
+{
+	Object.defineProperty(Object.prototype, "unwatch",
+	{
+		enumerable: false
+		, configurable: true
+		, writable: false
+		, value: function (prop) {
+			var val = this[prop];
+			delete this[prop]; // remove accessors
+			this[prop] = val;
+		}
+	});
+}
+
+
+function namespace( spaces, scopeFunction )
+{
+	var currentScope = window;		// This will store the last element we search into which will represent the namespace.
+	spaces = spaces.split(".");				// Break so that we can increment through the spaces.
+
+	// Go through every element and if the object does not exist, create it.
+	for( var i = 0; i &lt; spaces.length; i++ )
+	{
+		if ( spaces[i] in currentScope )
+		{
+			currentScope = currentScope[spaces[i]];
+		}
+		else
+		{
+			currentScope[spaces[i]] = {};
+			currentScope = 	currentScope[spaces[i]];
+		}
+	//	console.log(spaces[i], currentScope);
+	}
+
+	if ( scopeFunction != null )
+	{
+		scopeFunction.apply( currentScope );
+	}
+
+	// Return the current scope so new objects can be created in it.
+	return currentScope;
+}
+
+function usingNamespace()
+{
+	var namespaceRefList = [];
+	var functionArg = [];
+	var functionArgNames = [];
+	var returnAguments = [];
+
+	for( var i = 0; i &lt; arguments.length - 1; i++ )
+	{
+		var splitNamespace = arguments[i].split(".");
+		var finalObject = window[splitNamespace[0]];
+
+		for( var j = 1; j &lt; splitNamespace.length; j++ )
+		{
+			finalObject = finalObject[splitNamespace[j]];
+		}
+
+		var namespaceRef = splitNamespace[splitNamespace.length - 1];
+
+		for( var object in finalObject )
+		{
+			if ( typeof finalObject[object] === "object" || typeof finalObject[object] === "function")
+			{
+				namespaceRefList.push( finalObject );
+				functionArg.push(finalObject[object]);
+				functionArgNames.push(object);
+				returnAguments.push( finalObject );
+			}
+		}
+	}
+	var functionString = arguments[arguments.length - 1].toString();
+	var regExpTest = /^function\s*\(([\s\w\d,]*)\s*\)\s*\{([\S\s]*)}$/g;
+
+	var regResult = regExpTest.exec( functionString );
+
+	//var arguments = regResult[1].split(",");
+	var functionBody =  regResult[2];
+
+	functionBody += "return [" + functionArgNames.toString() + "];";
+
+	//for( var i = 0; i &lt; functionArg.watch)
+
+	var changes = Function( functionArgNames, functionBody ).apply( window, functionArg );
+
+	for( var i = 0; i &lt; changes.length; i++ )
+	{
+		returnAguments[i][functionArgNames[i]] = changes[i];
+	}
+}
 
 // We do a self calling function in order to hide some variables upon construction.
 (function ()
@@ -109,13 +237,146 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 		 */
 		value:        function ()
 		{
-			var newObj = this.createFinal();
+			var newObj = createFinal( this );
 			newObj.init.apply( newObj, arguments );
 			return newObj;
 		},
 		writable:     false,
 		configurable: false
 	};
+
+	function createFinal ( objectPrototype )
+	{
+		var isDestroyed = false;
+		var newObjectValues =
+		{
+			_extensionCount: {
+				value:        objectPrototype._extensionCount,
+				writable:     false,
+				configurable: false,
+				enumerable:   false
+			},
+			_methodTrack:    {
+				value:        0,
+				writable:     true,
+				configurable: false,
+				enumerable:   false
+			},
+			callParent:      {
+				/**
+				 * Handles the calling of parent methods. Specify the method name, and number of inherited objects you want to move back to call
+				 * a given method.
+				 * @param methodName The name of the method you want to call.
+				 * @param parents Specify the parent you want to call (0) is the minimum required (if no value, (0) is assumed).
+				 * @param methodArguments other arguments related to the method being called.
+				 * @returns {*} returns whatever the method called returns.
+				 * @method callParent
+				 * @memberof AVObj
+				 */
+				value:        function ( methodName, parents, methodArguments )
+				{
+					this._methodTrack += ( parents != null ? parents : 0 );
+
+					var returnValue = this["_parent" + ( this._extensionCount - ( this._methodTrack++ ) )][methodName].apply( this, methodArguments );
+					this._methodTrack = 0;
+
+					return returnValue;
+				},
+				writable:     false,
+				configurable: false,
+				enumerable:   false
+			},
+			_superTrack:     {
+				value:        0,
+				writable:     true,
+				configurable: false,
+				enumerable:   false
+			},
+			super:           {
+				/**
+				 * Call in any init method to activate the previous classes init method.
+				 * Use {@link AVObj.callParent} if you want to call another overridden member automatically.
+				 * @returns {*}
+				 * @method super
+				 * @instance
+				 * @memberof AVObj
+				 * @see AVObj.callParent
+				 */
+				value: function ()
+				{
+					var returnValue = this["_parent" + ( this._extensionCount - this._superTrack++ )].init.apply( this, arguments );
+					this._superTrack = 0;
+
+					return returnValue;
+				}
+			},
+			parent:          {
+				get:          function ()
+				{
+					console.error( "Cannot get from keyword 'this.parent'. Please avoid any parent calls that could be scoped to other objects!" );
+					return null;
+				},
+				enumerable:   false,
+				configurable: false
+			},
+			_observers:      {
+				value:        {},
+				writable:     true,
+				configurable: false,
+				enumerable:   false
+			},
+			create:          {
+				value:        function ()
+				{
+					console.error( "You can't call create on an object that has already been built!" );
+					return null;
+				},
+				writable:     false,
+				configurable: false,
+				enumerable:   false
+			},
+			destroyed:       {
+				value:        function ()
+				{
+					return isDestroyed;
+				},
+				writable:     true,
+				configurable: false,
+				enumerable:   false
+			},
+			/**
+			 * Destroys the given object.
+			 *
+			 * Calls deInit of the extended object and AVObj classes
+			 * as well handles the removal of links.
+			 *
+			 * Node this will also seal the object after the deInit is called.
+			 * @memberof AVObj
+			 * @method
+			 * @instance
+			 */
+			destroy:         {
+				value:        function ()
+				{
+					if ( !isDestroyed )
+					{
+						this.clearObservers();
+						this.deInit();
+
+						// Prevents any future modifications of _isDestroyed and seal the class from
+						// having other objects attached to it.
+						isDestroyed = true;
+						Object.seal( this );
+					}
+				},
+				writable:     false,
+				configurable: false
+			}
+		};
+
+		return Object.create( objectPrototype, newObjectValues );
+	}
+
 
 
 	var macroList = {};
@@ -221,7 +482,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 				{
 					if ( this._instance == null )
 					{
-						this._instance = this.createFinal();
+						this._instance = createFinal( this );
 						this.init.apply( this._instance, arguments );
 					}
 					return this._instance;
@@ -320,7 +581,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 			var interfaceValues = {};
 
 			// Goes through and checks all interfaces to make sure they are defined properly.
-			for( var i = 1; i &lt; arguments.length; i++ )
+			for( var i = 2; i &lt; arguments.length; i++ )
 			{
 				for( var methodName in arguments[i] )
 				{
@@ -369,141 +630,9 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 					enumerable:   false
 				} );
 
-
 			return newObject;
 		},
 
-		createFinal: function ()
-		{
-			var isDestroyed = false;
-			var newObjectValues =
-			{
-				_extensionCount: {
-					value:        this._extensionCount,
-					writable:     false,
-					configurable: false,
-					enumerable:   false
-				},
-				_methodTrack:    {
-					value:        0,
-					writable:     true,
-					configurable: false,
-					enumerable:   false
-				},
-				callParent:      {
-					/**
-					 * Handles the calling of parent methods. Specify the method name, and number of inherited objects you want to move back to call
-					 * a given method.
-					 * @param methodName The name of the method you want to call.
-					 * @param parents Specify the parent you want to call (0) is the minimum required (if no value, (0) is assumed).
-					 * @param methodArguments other arguments related to the method being called.
-					 * @returns {*} returns whatever the method called returns.
-					 * @method callParent
-					 * @memberof AVObj
-					 */
-					value:        function ( methodName, parents, methodArguments )
-					{
-						this._methodTrack += ( parents != null ? parents : 0 );
-
-						var returnValue = this["_parent" + ( this._extensionCount - ( this._methodTrack++ ) )][methodName].apply( this, methodArguments );
-						this._methodTrack = 0;
-
-						return returnValue;
-					},
-					writable:     false,
-					configurable: false,
-					enumerable:   false
-				},
-				_superTrack:     {
-					value:        0,
-					writable:     true,
-					configurable: false,
-					enumerable:   false
-				},
-				super:           {
-					/**
-					 * Call in any init method to activate the previous classes init method.
-					 * Use {@link AVObj.callParent} if you want to call another overridden member automatically.
-					 * @returns {*}
-					 * @method super
-					 * @instance
-					 * @memberof AVObj
-					 * @see AVObj.callParent
-					 */
-					value: function ()
-					{
-						var returnValue = this["_parent" + ( this._extensionCount - this._superTrack++ )].init.apply( this, arguments );
-						this._superTrack = 0;
-
-						return returnValue;
-					}
-				},
-				parent:          {
-					get:          function ()
-					{
-						console.error( "Cannot get from keyword 'this.parent'. Please avoid any parent calls that could be scoped to other objects!" );
-						return null;
-					},
-					enumerable:   false,
-					configurable: false
-				},
-				_observers:      {
-					value:        {},
-					writable:     true,
-					configurable: false,
-					enumerable:   false
-				},
-				create:          {
-					value:        function ()
-					{
-						console.error( "You can't call create on an object that has already been built!" );
-						return null;
-					},
-					writable:     false,
-					configurable: false,
-					enumerable:   false
-				},
-				destroyed:       {
-					value:        function ()
-					{
-						return isDestroyed;
-					},
-					writable:     true,
-					configurable: false,
-					enumerable:   false
-				},
-				/**
-				 * Destroys the given object.
-				 *
-				 * Calls deInit of the extended object and AVObj classes
-				 * as well handles the removal of links.
-				 *
-				 * Node this will also seal the object after the deInit is called.
-				 * @memberof AVObj
-				 * @method
-				 * @instance
-				 */
-				destroy:         {
-					value:        function ()
-					{
-						if ( !isDestroyed )
-						{
-							this.clearObservers();
-							this.deInit();
-
-							// Prevents any future modifications of _isDestroyed and seal the class from
-							// having other objects attached to it.
-							isDestroyed = true;
-							Object.seal( this );
-						}
-					},
-					writable:     false,
-					configurable: false
-				}
-			};
-
-			return Object.create( this, newObjectValues );
-		},
 
 		/**
 		 * &lt;b>Setter&lt;/b> - Allows you to extend the current list of options of an object to contain more.
@@ -574,7 +703,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 				if ( typeof objs[obj] == 'object' &amp;&amp; objs[obj] != null )
 				{
 					// Object Get/Set check. (this is slow, may need to optimise)...
-					if ( typeof objs[obj].get == "function" || typeof objs[obj].set == "function" || typeof objs[obj].value )
+					if ( typeof objs[obj].get == "function" || typeof objs[obj].set == "function" || objs[obj].value )
 					{
 						Object.defineProperty( this, obj, objs[obj] );
 					}
@@ -602,6 +731,13 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 			{
 				Object.preventExtensions( this );
 			}
+
+		},
+
+		prop : function( objs )
+		{
+			this.properties = objs;
+			return this;
 		},
 
 		/***********************************
@@ -813,13 +949,13 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#empty">empty</a></li><li><a href="global.html#node">node</a></li><li><a href="global.html#P">P</a></li><li><a href="global.html#text">text</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#deInit">deInit</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 20:48:48 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Oct 20 2014 21:40:26 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
