@@ -71,103 +71,57 @@ if ( !Function.prototype.bind )
 }
 
 /**
- * AVObject is used for constructing all objects. (namespace utility);
- * @classdesc The AVObject class is the base class that all other classes inherit from.
- * Visit the [getting started]{@link https://github.com/Kabe0/AVObj/wiki/1.-Introduction-,-A-Simple-Script} page for more information on how to construct and inherit from the AVObject class.
+ * namespace can be called to quickly create a new object and define the properties of that object.
  *
- * @class
+ * @see usingNamespace
+ * @param {string} spaces define the namespaces to either create or modify.
+ * @param {function} scopeFunction a scope where you can quickly add and change multiple values within the namespace.
+ * @returns {object}
  */
-var AVObj = null; // Will be created by the method below.
-
-var AVObjMacro = function( macroName, operation ){}; // Defined below.
-
-if (!Object.prototype.watch)
-{
-	Object.defineProperty(Object.prototype, "watch",
-	{
-		enumerable: false
-		, configurable: true
-		, writable: false
-		, value: function (prop, handler)
-		{
-			var	oldval = this[prop]
-				, newval = oldval
-				, getter = function () {
-					return newval;
-				}
-				, setter = function (val) {
-					oldval = newval;
-					return newval = handler.call(this, prop, oldval, val);
-				}
-				;
-
-			if (delete this[prop])
-			{ // can't watch constants
-				Object.defineProperty(this, prop, {
-					get: getter
-					, set: setter
-					, enumerable: true
-					, configurable: true
-				});
-			}
-		}
-	});
-}
-
-// object.unwatch
-if (!Object.prototype.unwatch)
-{
-	Object.defineProperty(Object.prototype, "unwatch",
-	{
-		enumerable: false
-		, configurable: true
-		, writable: false
-		, value: function (prop) {
-			var val = this[prop];
-			delete this[prop]; // remove accessors
-			this[prop] = val;
-		}
-	});
-}
-
-
 function namespace( spaces, scopeFunction )
 {
-	var currentScope = window;		// This will store the last element we search into which will represent the namespace.
-	spaces = spaces.split(".");				// Break so that we can increment through the spaces.
+	var curScope = window;		// This will store the last element we search into which will represent the namespace.
+	spaces = spaces.split(".");		// Break so that we can increment through the spaces.
 
 	// Go through every element and if the object does not exist, create it.
-	for( var i = 0; i &lt; spaces.length; i++ )
+	for( var i = 0, length = spaces.length; i &lt; length; i++ )
 	{
-		if ( spaces[i] in currentScope )
+		if ( spaces[i] in curScope )
 		{
-			currentScope = currentScope[spaces[i]];
+			curScope = curScope[spaces[i]];
 		}
 		else
 		{
-			currentScope[spaces[i]] = {};
-			currentScope = 	currentScope[spaces[i]];
+			curScope[spaces[i]] = {};
+			curScope = 	curScope[spaces[i]];
 		}
-	//	console.log(spaces[i], currentScope);
 	}
 
 	if ( scopeFunction != null )
 	{
-		scopeFunction.apply( currentScope );
+		scopeFunction.apply( curScope );
 	}
 
 	// Return the current scope so new objects can be created in it.
-	return currentScope;
+	return curScope;
 }
 
-function usingNamespace()
+/**
+ * UsingNamespace can be called to grab objects and define their attributes inside a scope as
+ * if the values were actually defined in the function.
+ *
+ * @see namespace
+ * @param {...string} namespaces define the namespaces to add to this new project scope.
+ */
+function usingNamespace( namespaces )
 {
-	var namespaceRefList = [];
-	var functionArg = [];
-	var functionArgNames = [];
-	var returnAguments = [];
+	var scopeNames = [];
+	var scopeArguments = [];
+	var scope = [];
 
-	for( var i = 0; i &lt; arguments.length - 1; i++ )
+	var i, argLength = arguments.length - 1;
+
+	for( i = 0; i &lt; argLength; i++ )
 	{
 		var splitNamespace = arguments[i].split(".");
 		var finalObject = window[splitNamespace[0]];
@@ -177,38 +131,40 @@ function usingNamespace()
 			finalObject = finalObject[splitNamespace[j]];
 		}
 
-		var namespaceRef = splitNamespace[splitNamespace.length - 1];
-
 		for( var object in finalObject )
 		{
-			if ( typeof finalObject[object] === "object" || typeof finalObject[object] === "function")
+			if ( typeof finalObject[object] === "object" || typeof finalObject[object] === "function" )
 			{
-				namespaceRefList.push( finalObject );
-				functionArg.push(finalObject[object]);
-				functionArgNames.push(object);
-				returnAguments.push( finalObject );
+				scope.push( finalObject );
+				scopeNames.push( object );
+				scopeArguments.push( finalObject[object] );
 			}
 		}
 	}
-	var functionString = arguments[arguments.length - 1].toString();
-	var regExpTest = /^function\s*\(([\s\w\d,]*)\s*\)\s*\{([\S\s]*)}$/g;
+	var functionString = arguments[argLength].toString();
+	// Creates a RegExp object which you can then fire the exec prototype method.
+	var regResult = (/^function\s*\([\s\w\d,]*\s*\)\s*\{([\S\s]*)}$/g).exec( functionString );
 
-	var regResult = regExpTest.exec( functionString );
+	var functionBody = regResult[1] + " return [" + scopeNames.toString() + "];";
+	var scopeChanges = Function( scopeNames, functionBody ).apply( this, scopeArguments );
 
-	//var arguments = regResult[1].split(",");
-	var functionBody =  regResult[2];
 
-	functionBody += "return [" + functionArgNames.toString() + "];";
-
-	//for( var i = 0; i &lt; functionArg.watch)
-
-	var changes = Function( functionArgNames, functionBody ).apply( window, functionArg );
-
-	for( var i = 0; i &lt; changes.length; i++ )
+	for( i = scopeChanges.length; i--; )
 	{
-		returnAguments[i][functionArgNames[i]] = changes[i];
+		scope[i][scopeNames[i]] = scopeChanges[i];
 	}
 }
+
+/**
+ * AVObject is used for constructing all objects. (namespace utility);
+ * @classdesc The AVObject class is the base class that all other classes inherit from.
+ * Visit the [getting started]{@link https://github.com/Kabe0/AVObj/wiki/1.-Introduction-,-A-Simple-Script} page for more information on how to construct and inherit from the AVObject class.
+ *
+ * @class
+ */
+var AVObj = null; // Will be created by the method below.
+
+var AVObjMacro = function( macroName, operation ){}; // Defined below.
 
 // We do a self calling function in order to hide some variables upon construction.
 (function ()
@@ -949,13 +905,13 @@ function usingNamespace()
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#deInit">deInit</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Oct 20 2014 21:40:26 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 21 2014 23:49:31 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

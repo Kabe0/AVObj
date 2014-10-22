@@ -65,187 +65,189 @@ XMLHttpRequest.prototype.removeListener  = function (event, functionName)
 	delete this['__' + functionName + '_bindValue']
 };
 
-var Request = AVObj.extend();
-	Request.properties =
+// We are promising the JavaScript compiler that all the values will exists later on.
+namespace( "AVObj.Utilities", function()
 {
-	/**
-	 * Call Request Init to create a request for a specific page.
-	 *
-	 * @param method The way the data should be sent. (Either Post or Get).
-	 * @param url The path to the file you want to load.
-	 * @param asynchronous If the event should halt all other processes.
-	 * @param finishFunction The function that will fire once the call is completed.
-	 * @param data Additional info such as form data goes here.
-	 * @constructor Request
-	 *
-	 * @classdesc The Request class is used for creating ajax page requests. Note that once the Request has been complete,
-	 * the object will self destruct as soon as the requested data is returned.
-	 */
-	init : function (method, url, asynchronous, finishFunction, data)
+	this.Request = AVObj.extend().prop(
 	{
-		this.request = new XMLHttpRequest ();
-		this.method = method;
-		this.url = url;
-		this.asynchronous = asynchronous;
-		this.finishFunction = finishFunction;
-		this.data = data;
+		/**
+		 * Call Request Init to create a request for a specific page.
+		 *
+		 * @param method The way the data should be sent. (Either Post or Get).
+		 * @param url The path to the file you want to load.
+		 * @param asynchronous If the event should halt all other processes.
+		 * @param finishFunction The function that will fire once the call is completed.
+		 * @param data Additional info such as form data goes here.
+		 * @constructor Request
+		 *
+		 * @classdesc The Request class is used for creating ajax page requests. Note that once the Request has been complete,
+		 * the object will self destruct as soon as the requested data is returned.
+		 */
+		init: function ( method, url, asynchronous, finishFunction, data )
+		{
+			this.request = new XMLHttpRequest();
+			this.method = method;
+			this.url = url;
+			this.asynchronous = asynchronous;
+			this.finishFunction = finishFunction;
+			this.data = data;
 
-		if (this.request == null)
-		{
-			console.error ("Browser does not support XMLHTTPRequest.");
-		}
-		else if (typeof url === 'string')
-		{
-			this.request.addListener ("error", 'transferError', this);
-			if (method === "POST")
+			if ( this.request == null )
 			{
-				this.sendPostRequest ();
+				console.error( "Browser does not support XMLHTTPRequest." );
 			}
-			else if (method === "GET")
+			else if ( typeof url === 'string' )
 			{
-				this.sendGetRequest ();
-			}
-			else
-			{
-				console.error ("no method defined. Please set to \"POST\" or \"GET\".");
-			}
-		}
-		else
-		{
-			console.error ("URL is not defined or is not a string.");
-		}
-	},
-
-	deInit : function()
-	{
-		delete this.request;
-		delete this.method;
-		delete this.url;
-		delete this.asynchronous;
-		delete this.finishFunction;
-		delete this.data;
-	},
-
-	transferError : function()
-	{
-		console.error ("An error has occurred while transferring the data.");
-	},
-
-	sendGetRequest : function()
-	{
-		this.request.open (this.method, this.url + "?" + this.convertToString (), this.asynchronous);
-		if (!this.asynchronous)
-		{
-			this.request.send (null);
-			this.finishFunction ({responseText : this.request.responseText});
-		}
-		else
-		{
-
-			this.request.addListener ("load", 'fireFunction', this);
-			this.request.send (null);
-		}
-	},
-
-	sendPostRequest : function()
-	{
-		this.request.open (this.method, this.url, this.asynchronous);
-		if (!this.asynchronous)
-		{
-			this.request.send (this.convertToForm ());
-			this.finishFunction ({responseText : this.request.responseText});
-			this.destroy();
-		}
-		else
-		{
-			this.request.addListener ("load", 'fireFunction', this);
-			this.request.send (this.convertToForm ());
-		}
-	},
-
-	/**
-	 * Fired when the request is complete
-	 * @param e object to pass into the finish function.
-	 */
-	fireFunction : function( e )
-	{
-		this.request.removeListener ("error", 'transferError');
-		this.request.removeListener ("load", 'fireFunction');
-		this.finishFunction (e.currentTarget);
-		this.destroy();
-	},
-
-	/**
-	 * Will stop the requests (only works on async calls).
-	 */
-	kill : function()
-	{
-		this.request.removeListener ("error", 'transferError');
-		this.request.removeListener ("load", 'fireFunction');
-		this.request.abort ();
-	},
-
-	/**
-	 * Converts the data to a string format.
-	 * @returns {string}
-	 */
-	convertToString : function ()
-	{
-		var newString = "";
-		if (typeof this.data == "object")
-		{
-			var firstAnd = false;
-			for (var element in this.data)
-			{
-				if (firstAnd)
+				this.request.addListener( "error", 'transferError', this );
+				if ( method === "POST" )
 				{
-					//noinspection JSUnfilteredForInLoop
-					newString += "&amp;" + element + "=" + encodeURIComponent (this.data[element]);
+					this.sendPostRequest();
+				}
+				else if ( method === "GET" )
+				{
+					this.sendGetRequest();
 				}
 				else
 				{
-					firstAnd = true;
-					//noinspection JSUnfilteredForInLoop
-					newString += element + "=" + encodeURIComponent (this.data[element]);
-				}
-			}
-		}
-		else if (typeof this.data == 'string') newString = this.data;
-
-		return newString;
-	},
-
-	/**
-	 * Converts the data to a FormData format.
-	 * @returns {*}
-	 */
-	convertToForm : function()
-	{
-		var object;
-		if (typeof this.data == "object" &amp;&amp; typeof FormData != 'undefined')
-		{
-			if (this.data instanceof FormData === false)
-			{
-				object = new FormData ();
-				for (var element in this.data)
-				{ //noinspection JSUnfilteredForInLoop
-					object.append (element, this.data[element]);
+					console.error( "no method defined. Please set to \"POST\" or \"GET\"." );
 				}
 			}
 			else
 			{
-				object = this.data;
+				console.error( "URL is not defined or is not a string." );
 			}
+		},
+
+		deInit: function ()
+		{
+			delete this.request;
+			delete this.method;
+			delete this.url;
+			delete this.asynchronous;
+			delete this.finishFunction;
+			delete this.data;
+		},
+
+		transferError: function ()
+		{
+			console.error( "An error has occurred while transferring the data." );
+		},
+
+		sendGetRequest: function ()
+		{
+			this.request.open( this.method, this.url + "?" + this.convertToString(), this.asynchronous );
+			if ( !this.asynchronous )
+			{
+				this.request.send( null );
+				this.finishFunction( {responseText: this.request.responseText} );
+			}
+			else
+			{
+
+				this.request.addListener( "load", 'fireFunction', this );
+				this.request.send( null );
+			}
+		},
+
+		sendPostRequest: function ()
+		{
+			this.request.open( this.method, this.url, this.asynchronous );
+			if ( !this.asynchronous )
+			{
+				this.request.send( this.convertToForm() );
+				this.finishFunction( {responseText: this.request.responseText} );
+				this.destroy();
+			}
+			else
+			{
+				this.request.addListener( "load", 'fireFunction', this );
+				this.request.send( this.convertToForm() );
+			}
+		},
+
+		/**
+		 * Fired when the request is complete
+		 * @param e object to pass into the finish function.
+		 */
+		fireFunction: function ( e )
+		{
+			this.request.removeListener( "error", 'transferError' );
+			this.request.removeListener( "load", 'fireFunction' );
+			this.finishFunction( e.currentTarget );
+			this.destroy();
+		},
+
+		/**
+		 * Will stop the requests (only works on async calls).
+		 */
+		kill: function ()
+		{
+			this.request.removeListener( "error", 'transferError' );
+			this.request.removeListener( "load", 'fireFunction' );
+			this.request.abort();
+		},
+
+		/**
+		 * Converts the data to a string format.
+		 * @returns {string}
+		 */
+		convertToString: function ()
+		{
+			var newString = "";
+			if ( typeof this.data == "object" )
+			{
+				var firstAnd = false;
+				for ( var element in this.data )
+				{
+					if ( firstAnd )
+					{
+						//noinspection JSUnfilteredForInLoop
+						newString += "&amp;" + element + "=" + encodeURIComponent( this.data[element] );
+					}
+					else
+					{
+						firstAnd = true;
+						//noinspection JSUnfilteredForInLoop
+						newString += element + "=" + encodeURIComponent( this.data[element] );
+					}
+				}
+			}
+			else if ( typeof this.data == 'string' ) newString = this.data;
+
+			return newString;
+		},
+
+		/**
+		 * Converts the data to a FormData format.
+		 * @returns {*}
+		 */
+		convertToForm: function ()
+		{
+			var object;
+			if ( typeof this.data == "object" &amp;&amp; typeof FormData != 'undefined' )
+			{
+				if ( this.data instanceof FormData === false )
+				{
+					object = new FormData();
+					for ( var element in this.data )
+					{ //noinspection JSUnfilteredForInLoop
+						object.append( element, this.data[element] );
+					}
+				}
+				else
+				{
+					object = this.data;
+				}
+			}
+			else object = this.convertToString();
+
+			if ( typeof object == 'string' )
+				this.request.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+
+			return object;
 		}
-		else object = this.convertToString();
-
-		if (typeof object == 'string')
-			this.request.setRequestHeader ("Content-type", "application/x-www-form-urlencoded");
-
-		return object;
-	}
-};
-</code></pre>
+	});
+});</code></pre>
         </article>
     </section>
 
@@ -255,13 +257,13 @@ var Request = AVObj.extend();
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CheckMedia.html">CheckMedia</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#deInit">deInit</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Oct 20 2014 21:40:26 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 21 2014 23:49:31 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
