@@ -851,6 +851,205 @@
         
             
 <dt>
+    <h4 class="name" id="addAObserver"><span class="type-signature"></span>addAObserver<span class="signature">(eventName, refName, method, scope)</span><span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        An alternative to the original #addObserver but instead allows you to define an anonymous method,which is tracked by the observer utility.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>eventName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">eventName The event you want to listen to</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>refName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Used to track the anonymous method.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The method you want to fire.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The object you want the observer to fire at (If not defined assumes global scope).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="AVObj.html#addAObserver">AVObj#addAObserver</a>
+    </li></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line785">line 785</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="AVObj.html#addObserver">AVObj#addObserver</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="addObserver"><span class="type-signature"></span>addObserver<span class="signature">(eventName, functionName, scope)</span><span class="type-signature"></span></h4>
 
     
@@ -931,7 +1130,7 @@
 
             
 
-            <td class="description last">The function name you want to call</td>
+            <td class="description last">defined by a property function name.</td>
         </tr>
 
     
@@ -990,7 +1189,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line736">line 736</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line753">line 753</a>
     </li></ul></dd>
     
 
@@ -1005,6 +1204,8 @@
             <li><a href="AVObj.html#fireObservers">AVObj#fireObservers</a></li>
         
             <li><a href="AVObj.html#removeObserver">AVObj#removeObserver</a></li>
+        
+            <li><a href="AVObj.html#addAObserver">AVObj#addAObserver</a></li>
         </ul>
     </dd>
     
@@ -1076,7 +1277,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line813">line 813</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line856">line 856</a>
     </li></ul></dd>
     
 
@@ -1158,7 +1359,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line287">line 287</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line307">line 307</a>
     </li></ul></dd>
     
 
@@ -1188,7 +1389,7 @@
         
             
 <dt>
-    <h4 class="name" id="fireObservers"><span class="type-signature"></span>fireObservers<span class="signature">(eventName)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="fireObservers"><span class="type-signature"></span>fireObservers<span class="signature">(eventName, &hellip;Unlimited)</span><span class="type-signature"></span></h4>
 
     
 </dt>
@@ -1217,6 +1418,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -1242,6 +1445,14 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
@@ -1252,7 +1463,7 @@
 
         <tr>
             
-                <td class="name"><code>...</code></td>
+                <td class="name"><code>Unlimited</code></td>
             
 
             <td class="type">
@@ -1265,10 +1476,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
 
             
 
-            <td class="description last">Unlimited number of arguments you want to define afterwards to be sent to the observer.</td>
+            <td class="description last">number of arguments you want to define afterwards to be sent to the observer.</td>
         </tr>
 
     
@@ -1304,7 +1525,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line713">line 713</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line729">line 729</a>
     </li></ul></dd>
     
 
@@ -1431,7 +1652,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line765">line 765</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line808">line 808</a>
     </li></ul></dd>
     
 
@@ -1625,7 +1846,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line780">line 780</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line823">line 823</a>
     </li></ul></dd>
     
 
@@ -1752,7 +1973,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line801">line 801</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line844">line 844</a>
     </li></ul></dd>
     
 
@@ -1834,7 +2055,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line225">line 225</a>
+        <a href="AVObj.js.html">AVObj.js</a>, <a href="AVObj.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -1908,7 +2129,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 21 2014 23:49:31 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Thu Oct 23 2014 01:17:25 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

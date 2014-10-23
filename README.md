@@ -12,6 +12,7 @@ Added new functionality to the Node class such as smart recursing deletion as we
 *   Support for extending and creating objects with ease. [Wiki Info](https://github.com/Kabe0/AVObj/wiki/2.-Inheritance-Problem)
 *   Simple syntax for creating getter/setter properties
 *   Support for the singleton pattern
+*	Support for namespaces such as defining and combining namespaces into method scopes.
 *   Smart Node manipulation for fast development with greatly enhanced functionality.
 *   Parent property access for objects that are extended (prototype access).
 *   Avoid Javascript downfalls with prototype's and never ending loops when accesing parent methods.
@@ -30,8 +31,7 @@ The command we just wrote uses Object.create() to build us a new object with a p
 Next lets add some of our own methods and properties to the new object we just created. The first two methods ever created are init and deInit. These will fire when the object is either created or destroyed.
 
 ```javascript
-var NewObject = AVObj.extend();
-NewObject.properties = 
+var NewObject = AVObj.extend().prop( = 
 {
     sharedVariable : "Shared between all classes!",     // Defining properties outside of methods will result in that
                                                         // property being shared between all objects created by the class.
@@ -49,7 +49,7 @@ NewObject.properties =
     {
         alert("Constructor called this " + this.testVar + " method!");
     }
-};
+});
 ```
 We have built ourselves a complete object, but if you run it you will notice nothing happens. This is because the object has been defined but we have not created any instances of it. To create an instance of the object call we have to add this code below...
 

@@ -81,20 +81,29 @@ if ( !Function.prototype.bind )
 function namespace( spaces, scopeFunction )
 {
 	var curScope = window;		// This will store the last element we search into which will represent the namespace.
-	spaces = spaces.split(".");		// Break so that we can increment through the spaces.
 
-	// Go through every element and if the object does not exist, create it.
-	for( var i = 0, length = spaces.length; i &lt; length; i++ )
+	switch (typeof spaces )
 	{
-		if ( spaces[i] in curScope )
+	case "object":
+		curScope = spaces;
+		break;
+	case "string":
+		spaces = spaces.split( "." );		// Break so that we can increment through the spaces.
+
+		// Go through every element and if the object does not exist, create it.
+		for ( var i = 0, length = spaces.length; i &lt; length; i++ )
 		{
-			curScope = curScope[spaces[i]];
+			if ( spaces[i] in curScope )
+			{
+				curScope = curScope[spaces[i]];
+			}
+			else
+			{
+				curScope[spaces[i]] = {};
+				curScope = curScope[spaces[i]];
+			}
 		}
-		else
-		{
-			curScope[spaces[i]] = {};
-			curScope = 	curScope[spaces[i]];
-		}
+		break;
 	}
 
 	if ( scopeFunction != null )
@@ -111,7 +120,7 @@ function namespace( spaces, scopeFunction )
  * if the values were actually defined in the function.
  *
  * @see namespace
- * @param {...string} namespaces define the namespaces to add to this new project scope.
+ * @param {...(String|Object)} namespaces define the namespaces to add to this new project scope.
  */
 function usingNamespace( namespaces )
 {
@@ -123,13 +132,22 @@ function usingNamespace( namespaces )
 
 	for( i = 0; i &lt; argLength; i++ )
 	{
-		var splitNamespace = arguments[i].split(".");
-		var finalObject = window[splitNamespace[0]];
-
-		for( var j = 1; j &lt; splitNamespace.length; j++ )
+		switch( typeof arguments[i] )
 		{
-			finalObject = finalObject[splitNamespace[j]];
+		case "object":
+			finalObject = arguments[i];
+			break;
+		case "string":
+			var splitNamespace = arguments[i].split(".");
+			var finalObject = window[splitNamespace[0]];
+
+			for( var j = 1, length = splitNamespace.length; j &lt; length; j++ )
+			{
+				finalObject = finalObject[splitNamespace[j]];
+			}
+			break;
 		}
+
 
 		for( var object in finalObject )
 		{
@@ -162,13 +180,15 @@ function usingNamespace( namespaces )
  *
  * @class
  */
-var AVObj = null; // Will be created by the method below.
-
-var AVObjMacro = function( macroName, operation ){}; // Defined below.
+var AVObj = null; 										// Will be created by the method below.
+var AV = { Utilities : {} };							// Defines the main namespace for all AVObject utilities (not necessary, but helps with IDE Editor's.
+var AVObjMacro = function( macroName, operation ){};	// Defined below.
 
 // We do a self calling function in order to hide some variables upon construction.
 (function ()
 {
+	var macroList = {};
+
 	////////////////////////////////
 	//
 	//   Construction objects are all defined here.
@@ -332,10 +352,6 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 
 		return Object.create( objectPrototype, newObjectValues );
 	}
-
-
-
-	var macroList = {};
 
 	/**
 	 * Command for extending the {@link AVObj.extend} method with additional macros.
@@ -731,7 +747,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 		/**
 		 * Fires off an observer-scope
 		 * @param {String} eventName The event you want to call
-		 * @param {Object} ... Unlimited number of arguments you want to define afterwards to be sent to the observer.
+		 * @param {...Object} Unlimited number of arguments you want to define afterwards to be sent to the observer.
 		 * @memberof AVObj
 		 * @instance
 		 * @see AVObj#addObserver
@@ -752,13 +768,14 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 		/**
 		 * Set an observer to listen to a scope.
 		 * @param {String} eventName The event you want to listen to
-		 * @param {String} functionName The function name you want to call
+		 * @param {String} functionName defined by a property function name.
 		 * @param {Object} scope The object you want the observer to fire at (If not defined assumes global scope).
 		 * @memberof AVObj
 		 * @instance
 		 * @see {@link https://github.com/kabe0/AVObj/wiki/3.%20Observer%20Pattern|Observer Pattern Tutorial}
 		 * @see AVObj#fireObservers
 		 * @see AVObj#removeObserver
+ 		 * @see AVObj#addAObserver
 		 */
 		addObserver:   function ( eventName, functionName, scope )
 		{
@@ -773,12 +790,38 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 			}
 			if ( scope[functionName] )		// Function exists
 			{
-				this._observers[eventName].push( {scope: scope, function: scope[functionName] } );
+				this._observers[eventName].push( {scope: scope, functionName: functionName, function: scope[functionName] } );
 			}
 			else
 			{
 				console.error( functionName + " Does not exist in the given scope of ", scope )
 			}
+		},
+
+		/**
+		 * An alternative to the original {@link #addObserver} but instead allows you to define an anonymous method,
+		 * which is tracked by the observer utility.
+		 * @param {String} eventName eventName The event you want to listen to
+		 * @param {String} refName Used to track the anonymous method.
+		 * @param {Function} method The method you want to fire.
+		 * @param {Object} scope The object you want the observer to fire at (If not defined assumes global scope).
+		 * @memberof AVObj
+		 * @instance
+		 * @see AVObj#addObserver
+		 */
+		addAObserver : function( eventName, refName, method, scope )
+		{
+			if ( !scope )	// Assume global if no scope given.
+			{
+				scope = window;
+			}
+
+			if ( !this._observers[eventName] )	// Create observer if it does not exist yet.
+			{
+				this._observers[eventName] = [];
+			}
+
+			this._observers[eventName].push( {scope: scope, functionName: refName, function: method } );
 		},
 
 		/**
@@ -809,7 +852,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 			var currentEvent = this._observers[eventName];
 			for ( var i = 0; i &lt; currentEvent.length; i++ )
 			{
-				if ( currentEvent[i].scope == scope &amp;&amp; currentEvent[i].function == scope[functionName] )
+				if ( currentEvent[i].scope == scope &amp;&amp; currentEvent[i].functionName == functionName )
 				{
 					this._observers[eventName].splice( i, 1 );
 					break;
@@ -911,7 +954,7 @@ var AVObjMacro = function( macroName, operation ){}; // Defined below.
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Oct 21 2014 23:49:31 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Thu Oct 23 2014 01:17:24 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
