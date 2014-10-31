@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Page</title>
+    <title>JSDoc: Class: Node@</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Page</h1>
+    <h1 class="page-title">Class: Node@</h1>
 
     
 
@@ -27,10 +27,8 @@
 
 <header>
     <h2>
-    Page ~ <i>Static</i>
+    Node@
     </h2>
-    
-        <div class="class-description">The Page Class handles node creation and management.</div>
     
 </header>
 
@@ -39,6 +37,131 @@
     
 
     
+		
+        
+<dt>
+    <h4 class="name" id="Node@"><span class="type-signature"></span>Node@.create<span class="signature">(Element)</span><span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Creates the class Node object to wrap around an Element. Call Page.build to construct a new element.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Defines the element that will be encapsulated by the Node class.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line192">line 192</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Page.html#build">Page.build</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
 		
     
     </div>
@@ -67,788 +190,6 @@
         <h3 class="subsection-title">Methods</h3>
 
         <dl>
-            
-<dt>
-    <h4 class="name" id="build"><span class="type-signature">(static) </span>build<span class="signature">(nodeName, nodeProperties)</span><span class="type-signature"> &rarr; {<a href="Node.html">Node</a>}</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Creates a new <a href="Node.html">Node</a> and element that is unattached.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nodeName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Name of the node tage you want to build.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>nodeProperties</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The different attributes of the node. Object names text and htmlText will allow you to input string directly into the object.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line116">line 116</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Node.html">Node</a></span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="empty"><span class="type-signature">(static) </span>empty<span class="signature">(arguments)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Checks if the variable is a string that is empty.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>arguments</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The value you want to determine if its empty or not.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line145">line 145</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    sets to true if the string is empty.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="find"><span class="type-signature">(static) </span>find<span class="signature">(nodeName, parent<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Node.html">Node</a>|Array.&lt;<a href="Node.html">Node</a>>}</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Used to find a <a href="Node.html">Node</a> on the current document using one of the methods below...<table class="params">    <thead>    <tr><th>Search Value</th><th>Description</th></tr>    </thead>    <tbody>    <tr><td><code>.{string]</code></th><td>stands for class name and returns array of nodes.</td></tr>    <tr><td><code>#{string]</code></th><td>stands for ID name and returns one node.</td></tr>    <tr><td><code>{string]</code></th><td>No symbol proceeding stands for tag name.</td></tr>    </tbody></table>
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nodeName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">The name of the object you want to find.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parent</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">element</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    document
-                
-                </td>
-            
-
-            <td class="description last">value that can be defined to search through a specified object.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line51">line 51</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li>P</li>
-        </ul>
-    </dd>
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Node.html">Node</a></span>
-|
-
-<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="generateNodeFromElements"><span class="type-signature">(static) </span>generateNodeFromElements<span class="signature">(nodeObjects)</span><span class="type-signature"> &rarr; {<a href="Node.html">Node</a>|Array.&lt;<a href="Node.html">Node</a>>}</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Generates <a href="Node.html">Node</a> objects from elements passed in by the parameter nodeObjects.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>nodeObjects</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">element</span>
-|
-
-<span class="param-type">Array.&lt;element></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The objects that need to be encased (if not already) in a <a href="Node.html">Node</a> object.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line92">line 92</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    Object returned is same size as the object passed into the function.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Node.html">Node</a></span>
-|
-
-<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="text"><span class="type-signature">(static) </span>text<span class="signature">(string)</span><span class="type-signature"> &rarr; {Text}</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Returns a new text node.
-    </div>
-    
-
-    
-
-    
-
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>string</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Node.js.html">utils/Node.js</a>, <a href="Node.js.html#line158">line 158</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Text</span>
-
-
-    </dd>
-</dl>
-
-        
-
-    
-</dd>
-
-        
             
 <dt>
     <h4 class="name" id="addAObserver"><span class="type-signature"></span>addAObserver<span class="signature">(eventName, refName, method, scope)</span><span class="type-signature"></span></h4>
@@ -2123,13 +1464,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="Node.html">Node</a></li><li><a href="Page.html">Page</a></li><li><a href="Request.html">Request</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#loadView">loadView</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li><li><a href="_.html">Node@</a></li><li><a href="Request.html">Request</a></li><li><a href="Utilities.Page.html">Page</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#loadView">loadView</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Oct 27 2014 00:17:31 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Oct 27 2014 00:19:56 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
