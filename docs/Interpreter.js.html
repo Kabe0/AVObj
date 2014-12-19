@@ -40,33 +40,174 @@
  * Created by Ian on 2014-10-28.
  */
 
-namespace( "AVApp.Display", function()
+namespace( AV.App.Display, function( $scope )
 {
-	var LanguageObject =
-	{
-		builder :[
+	this.Component = AVObj.extend().prop(
+		{
+			init : function(  )
 			{
-				reg:  /&lt;(?!\\)([\w]*)([\S\s]*)\/?\>$/,
-				exec: function ( checkValue )
+				this.regExp = /&lt;(?!\\)([\w]*)([\S\s]*)\/?\>$/
+			},
+			build : function()
+			{
+
+			}
+		}
+	);
+
+	$scope.Parser = AVObj.extend().prop(
+		{
+			// eNUMs
+			UNKNOWN : 0,
+			TEXT 	: 1,
+			ELEMENT : 2,
+
+			init : function()
+			{
+				console.log("hi");
+			}
+		}
+	);
+
+	//TODO clean up parser.
+	$scope.HTMLParser = $scope.Parser.extend( { initStaticObject : true } ).prop(
+		{
+			parseText : function( text )
+			{
+				// Build tree objects defined with {{ nodeData, children }}
+				var buildTree = [];
+				var currentChildren = [ buildTree ];
+
+				// Split up text into individual nodes ranging from Elements to textNodes
+				var regExp = /&lt;([a-zA-Z\d= '"-]+)>|&lt;\/([a-zA-Z\d= '"-]+)>|([\w\s{{}}]+)/mg;
+				var regExp2 = /(?:([\w\s]+)=?["']?([\w\s]*)["']?)/mg;
+
+				var result;
+
+				while ( result = regExp.exec(text))
 				{
-					//var results;
-					//if ( results = checkValue.match( /^&lt;([\w]*)([\S\s]*)\/?\>$/ ) )
-					//{
-					//	var buildObject = results[1];
-						//var properties = results[2];
+					// Open Node1
+					if ( result[1] )
+					{
+						var nodeResult = result[1].trim().match(/^(\w*)/);
 
-						console.log( checkValue );
+						var slice = result[1].slice(nodeResult[1].length);
+						var result2;
+						var attributes = [];
 
-					//	AV.Utilities.node( buildObject )
-					//}
+						while( result2 = regExp2.exec(slice) )
+						{
+							var newObj = {};
+							newObj[result2[1]] = result2[2];
 
-					// Returning true eats the value, returning false will allow the next function to test.
-					return true;
+							attributes.push( newObj );
+						}
+
+						var newChildren = [];
+						var newObject = { type : this.ELEMENT, name : nodeResult[1], attributes : attributes, children : newChildren };
+						currentChildren[currentChildren.length - 1].push( newObject );
+						currentChildren.push( newChildren );	// Construct a new list of children.
+					}
+					else if ( result[2] )
+					{
+						if ( currentChildren.length > 1 ) currentChildren.pop();
+					}
+					else if ( result[3] )
+					{
+						currentChildren[currentChildren.length - 1].push( { type : this.TEXT, text : result[3] } );
+					}
+				}
+
+				return buildTree;
+			},
+			serialize : function()
+			{
+
+			}
+		}
+	);
+
+
+	/**
+	 * Templates are constructed by the Parsers and handle the interactions of an app.
+	 */
+	this.Template = AVObj.extend().prop(
+		{
+			/**
+			 * @extends AVObj
+			 * @class AV.App.Display.Template
+			 */
+			init : function()
+			{
+
+			}
+		}
+	);
+
+/*
+	var LanguageParser =
+	{
+		stringParser : /&lt;([a-zA-Z\d= '"-]+)>|&lt;\/([a-zA-Z\d= '"-]+)>|{{([\w\s]+)}}|([\w +="']+)/gm,
+		results :
+		{
+			1 : {
+				exp : "&lt;([a-zA-Z\d= '\"-]*)>",
+				name: "element",
+				exec: function ( instance, instructions )
+				{
+					var stringer = /&lt;([a-zA-Z\d= '"-]+)>|&lt;\/([a-zA-Z\d= '"-]+)>|{{([\w\s]+)}}|([\w +="']+)/gm;
+					var execut;
+					console.log("hi");
+					if ( execut = stringer.exec( instructions ) )
+					{
+						console.log( execut );
+					}
+
+					//var results = instance.grabCheese2( instructions );
+
+					/*
+					var arguments = {}
+
+					var match;
+
+					while( match = /[a-zA-Z\d=]/g.exec( instructions ) )
+					{
+
+					}
+
+					return {
+
+					};
+
+				}
+				},
+			2 : {
+				exp : "&lt;\/([a-zA-Z\d= '\"-]*)>",
+				name: "closeElement",
+				exec: function ( name, instructions )
+				{
+
+				}
+			},
+			3 : {
+				exp : "{{([\w\s]*)}}",
+				name: "operation",
+				exec: function ( name, instructions )
+				{
+
+				}
+			},
+			4 : {
+				exp : "([\w ]+)",
+				name: "textNode",
+				exec: function ( name, instructions )
+				{
 				}
 			}
-		],
-		stringParser : /(&lt;[a-zA-Z\d ="-\/]*>|[\w]+)/gm
-	};
+		}
+	};*/
+
+
 
 	/**
 	 * The Interpreter handles converting any string text into dynamic node
@@ -80,6 +221,10 @@ namespace( "AVApp.Display", function()
 			 */
 			init : function( instructions, language )
 			{
+				this.watchValues = {};
+
+				this.assembler = [];
+
 				var node1 = AV.Utilities.node("div");
 				var node2 = AV.Utilities.node("div");
 
@@ -110,7 +255,12 @@ namespace( "AVApp.Display", function()
 */
 				this.grabCheese1( instructions );
 				this.grabCheese2( instructions );
-				this.grabCheese3( instructions );
+			//	this.grabCheese3( instructions );
+			},
+
+			createAssembler : function( type, instruction )
+			{
+				this.assembler.push( { type:type, instruction:instruction } );
 			},
 
 			/**
@@ -135,6 +285,10 @@ namespace( "AVApp.Display", function()
 
 			grabCheese1 : function( string )
 			{
+		//		var superString = "pringles";
+			//	console.log( superString >> 5);
+
+				/*
 				console.time("cheese 1" );
 
 				var stringCheck = "hellp";
@@ -165,32 +319,43 @@ namespace( "AVApp.Display", function()
 				}
 
 				console.timeEnd("cheese 1");
+				*/
 			},
 
 			grabCheese2 : function( string )
 			{
 				console.time("cheese 2" );
 
+				var assembler = [];
 				var results;
-				var length = LanguageObject.builder.length;
+				var length = LanguageParser.results.length;
 
-				while( results = LanguageObject.stringParser.exec(string) )
+			//	console.log(string);
+
+				while( results = LanguageParser.stringParser.exec(string) )
 				{
-					for( var i = length; i--; )
+					for( var i = 1, resultLength = results.length; i &lt; resultLength; i++ )
 					{
-						var buildResult;
-						if ( buildResult = results[1].match( LanguageObject.builder[i].reg ) )
+						if ( results[i] != null )
 						{
-							LanguageObject.builder[i].exec( buildResult );
+							//assembler.push( { name: LanguageParser.results[i].name, instructions: results[i] } );
+
+							if ( LanguageParser.results[i].exec(this, results[i] ) )
+							{
+
+							}
+
 							break;
 						}
-						// fire with the result that we got from the string.
-						//LanguageObject.builder[i]( results[1] );
 					}
 					//resultArray.push(result);
 				}
 
+				//console.log(assembler);
+
 				console.timeEnd("cheese 2");
+
+				return assembler;
 			},
 
 			grabCheese3 : function( string )
@@ -221,13 +386,13 @@ namespace( "AVApp.Display", function()
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.AVApp.html">AVApp</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Fri Oct 31 2014 08:28:23 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Fri Dec 19 2014 08:57:25 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

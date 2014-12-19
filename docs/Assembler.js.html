@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Index</title>
+    <title>JSDoc: Source: AVApp/Display/Assembler.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,30 +17,96 @@
 
 <div id="main">
 
-    <h1 class="page-title">Index</h1>
+    <h1 class="page-title">Source: AVApp/Display/Assembler.js</h1>
 
     
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2014 Ian Carson - LinkedIn http://lnkd.in/9qJWap
+ *
+ * Project : AVObj - Making JS Simple.
+ * Version : 0.6.1
+ * License : MIT (http://www.opensource.org/licenses/mit-license.php)
+ *
+ * For the latest updates go to http://AVObject.net
+ * Visit the wiki for howto information on getting started at https://github.com/Kabe0/AVObj/wiki
+ */
+
+/**
+ * Created by Ian on 2014-12-15.
+ */
+
+using( AV.App.Utilities ).within( AV.App.Display, function( $scope )
+{
+
+	AVObjMacro( "registerEntity",
+		null,
+		function( object, options )
+		{
+			$scope.Assembler.registerAssemblerEntity( object );
+		}
+	);
 
 
-    <h3> </h3>
+	/**
+	 * The Assembler class handling building view's and assigning properties and events to the views.
+	 * @class AV.App.Utilities.Assembler
+	 */
+	$scope.Assembler = AVObj.extend( { initStaticObject : true } ).prop(
+	{
+		regList : {},		// Stores all the assembler components based on name.
+		registerAssemblerEntity : function ( component )
+		{
+			console.log("registered");
+		},
+		buildLayer : function( layer, buildTree )
+		{
+
+		}
+	});
+
+	$scope.BaseEntity = AVObj.extend().prop(
+		{
+			init : function()
+			{
+
+			}
+
+		}
+	)
 
 
+	// Testing component that can be applied to the Assembler.
+	$scope.NewEntity = Node.extend( { registerEntity: { name:"k", attributes:["firstName", "lastName"] } } ).prop(
+		{
+			init : function( node, firstName, lastName )
+			{
+				console.log("called");
+			}
+		}
+	);
+});
 
+/*
+usingNamespace( function()
+{
+	namespace( AV.App.Display, function( $scope )
+	{
+		$scope.Assembler = AVObj.extend( { initStaticObject : true } ).prop(
+		{
+			init : function()
+			{
 
-
-
-
-
-
-    
-
-
-
-
-
+			}
+		});
+	});
+});*/</code></pre>
+        </article>
+    </section>
 
 
 
