@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="lib/AVObj.js" type="text/javascript"></script>
+    <script src="lib/utils/Node.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/Assembler.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/Interpreter.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/Layer.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/LayerTransitionBase.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/View.js" type="text/javascript"></script>
+    <script src="lib/AVApp/Display/ViewManager.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        using( AV.App.Display, AV.Utilities ).on( function()
+        {
+            var Testing = Node.create( "p" );
+
+
+            var layer = Layer.create( HTMLParser.parseText( "<p>Welcome to more testing text.</p><p>Hello world!</p>" ) )
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
