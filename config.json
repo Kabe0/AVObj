@@ -1,0 +1,15 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+		"include": [ "lib" ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/staticclass.js"],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}

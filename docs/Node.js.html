@@ -40,35 +40,55 @@
  * Created by Ian on 2014-12-19.
  */
 
-using().within( AV.App.Utilities, function( $scope )
+using().within( AV.Utilities, function( $scope )
 {
-	$scope.Node = AVObj.extend().prop(
+	AVObjMacro( "configComponent",
+		function ( properties, name ) {
+			properties._componentName =
+			{
+				value : name
+			}
+		},
+		function( object, name )
 		{
+			$scope.Node._componentList[name] = object;
+		}
+	);
+
+	var Node = $scope.Node = AVObj.extend().prop(
+		{
+			_componentList : {},
+
 			preInit : function()
 			{
-				this._components = {};
+				this._components = [];
+				this._componentsMap = {};
 			},
 
 			/**
-			 * @param name
-			 * @param [AV.App.Utilities.Component] components
-			 * @param nodeAttributes
+			 * @param {string} name
+			 * @param {AV.Utilities.Component[]} components
+			 * @param {object} nodeAttributes
 			 * @constructor AV.App.Utilities.Node
 			 */
 			init : function( name, components, nodeAttributes )
 			{
+				if ( !components ) components = [];
+
 				// Loop through all the components defined and if array object, create, and if object add to the _components array.
 				for( var i = 0; i &lt; components.length; i++ )
 				{
 					var component = components[i];
-					if ( component.isPrototypeOf( $scope.Component ) )
+
+					// We have to make sure that the component exists with a component name, and that the name has been registered with the Node object.
+					// If the value is not registered than the component cannot be created.
+					if ( component &amp;&amp; component._componentName &amp;&amp; this._componentList[component._componentName] )
 					{
-						console.log("hi");
 						this.setComponent( component );
 					}
 					else
 					{
-
+						console.error( "Component ", component, " does not exist or is not registered with the Node class. Make sure the MACRO configComponent is defined in the component." );
 					}
 				}
 
@@ -76,37 +96,75 @@ using().within( AV.App.Utilities, function( $scope )
 
 			getComponent : function( componentName )
 			{
-
+				var component = this._componentsMap[ componentName];
+				return ( component &amp;&amp; component.length > 0 ? this._componentsMap[ componentName ][0] : null );
 			},
 
 			getComponents : function( componentName )
 			{
-
+				return this._componentsMap[ componentName ];
 			},
 
 			setComponent : function( component )
 			{
-				console.log("setting");
+				this._components.push( component );
+
+				// Checking of the componentsMap already has the name registered for the Node, if not the array is created.
+				if ( !this._componentsMap[ component._componentName ] ) this._componentsMap[ component._componentName ] = [];
+
+				this._componentsMap[ component._componentName].push( component );
+			},
+
+			createComponent : function( componentName, properties )
+			{
+				var object = this._componentList[componentName];	// Stored so that the scope can be referenced later.
+				if ( object )										// We don't want to bother creating the object if it is not registered.
+				{
+					this._components.push( object.create.apply( object, properties ) );
+				}
 			}
 		}
 	);
 
-	$scope.Component = AVObj.extend().prop(
+	var ComponentTest = $scope.ComponentTest = AVObj.extend(  ).prop(
 		{
+			init : function()
+			{
+
+			}
+		});
+
+	var Component = $scope.Component = AVObj.extend( { configComponent : "BaseComponent" } ).prop(
+		{
+			preInit : function()
+			{
+				this.storeValue = 0;
+			},
 			/**
 			 *
 			 * @param value
 			 * @param parentNode the object that this component belongs to.
 			 * @constructor AV.App.Utilities.Component
 			 */
-			init : function( value, parentNode )
+			init : function( value )
+			{
+				this.storeValue = value;
+				console.log("Base Component Init");
+			},
+
+			start : function( parentNode )
 			{
 
+			},
+
+			grabValue : function()
+			{
+				return this.storeValue;
 			}
 		}
 	);
 
-	$scope.Node.create( "div", [["Component", $scope.Component.create("500") ], {} ] );
+	var node = $scope.Node.create( "div", [ $scope.Component.create("500"), $scope.Component.create("9000") ] );
 
 });</code></pre>
         </article>
@@ -118,13 +176,13 @@ using().within( AV.App.Utilities, function( $scope )
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#buildTree">buildTree</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Dec 22 2014 00:20:58 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Dec 27 2014 16:34:23 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
