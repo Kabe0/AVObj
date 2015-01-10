@@ -13,19 +13,26 @@
     <script src="lib/AVApp/Display/ViewManager.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-        using( AV.App.Display, AV.Utilities ).on( function( Layer, HTMLParser )
+        var layer = null;
+
+                using( AV.App.Display, AV.Utilities ).on( function( Layer, HTMLParser )
         {
-            var Testing = Node.create( "p" );
+          //  var Testing = Node.create( "p" );
 
-            var layer = Layer.create( HTMLParser.parseText( "<p>Welcome to more testing text.</p><p>Hello world!</p>" ) )
-
-            console.log( layer.layerNode.children );
-
+            layer = Layer.create( HTMLParser.parseText( "<k cm-BaseComponent='hiworld,55,{penguins}' value='frog' name='tree'>Special node will not appear</k><p>This is actually being parsed so this is kind of amazing in a way!</p><p>Welcome to more testing text.</p><p>Hello world!</p>" ) );
         });
 
     </script>
 </head>
 <body>
+<div id="cale"></div>
+<script type="text/javascript">
+    document.getElementById("cale").appendChild( layer._element );
+</script>
+
+<view id="MainView">
+
+</view>
 
 </body>
 </html>

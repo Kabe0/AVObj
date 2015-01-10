@@ -55,24 +55,28 @@ using().within( AV.Utilities, function( $scope )
 		}
 	);
 
-	var Node = $scope.Node = AVObj.extend().prop(
+	$scope.Node = AVObj.extend().prop(
 		{
 			_componentList : {},
 
 			preInit : function()
 			{
+				this._element = null;
 				this._components = [];
 				this._componentsMap = {};
 			},
 
 			/**
-			 * @param {string} name
+			 * @param {string|element} name Pass in either a string value or element if you want to wrap the node around it.
 			 * @param {AV.Utilities.Component[]} components
 			 * @param {object} nodeAttributes
 			 * @constructor AV.App.Utilities.Node
 			 */
 			init : function( name, components, nodeAttributes )
 			{
+				this._element = ( typeof name == "object" ? name : document.createElement( name ) );
+				this._element._avNode = this;
+
 				if ( !components ) components = [];
 
 				// Loop through all the components defined and if array object, create, and if object add to the _components array.
@@ -91,8 +95,48 @@ using().within( AV.Utilities, function( $scope )
 						console.error( "Component ", component, " does not exist or is not registered with the Node class. Make sure the MACRO configComponent is defined in the component." );
 					}
 				}
-
 			},
+
+			//region Child Modifications
+
+			push : function( node )
+			{
+				this._element.appendChild( node._element );
+			},
+
+			remove : function( node )
+			{
+				this._element.removeChild( node._element );
+			},
+
+			children :
+			{
+				get : function()
+				{
+					var children = this._element.childNodes;
+					var childNodes = [];
+
+					for( var i = 0, length = children.length; i &lt; length; i++ )
+					{
+						childNodes.push( children[i] );
+					}
+
+					return childNodes;
+				}
+			},
+
+			clear : function()
+			{
+				var children = this._element.childNodes;
+				for( var i = children.length; i--; )
+				{
+					children[i].pop();
+				}
+			},
+
+			//endregion
+
+			//region Component Modifications
 
 			getComponent : function( componentName )
 			{
@@ -123,8 +167,12 @@ using().within( AV.Utilities, function( $scope )
 					this._components.push( object.create.apply( object, properties ) );
 				}
 			}
+
+			//endregion
 		}
 	);
+
+	var Node = $scope.Node;
 
 	var ComponentTest = $scope.ComponentTest = AVObj.extend(  ).prop(
 		{
@@ -149,7 +197,7 @@ using().within( AV.Utilities, function( $scope )
 			init : function( value )
 			{
 				this.storeValue = value;
-				console.log("Base Component Init");
+				console.log("Base Component Init " + value );
 			},
 
 			start : function( parentNode )
@@ -176,13 +224,13 @@ using().within( AV.Utilities, function( $scope )
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#buildTree">buildTree</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildLayer">buildLayer</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Dec 27 2014 16:34:23 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Fri Jan 09 2015 01:19:24 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

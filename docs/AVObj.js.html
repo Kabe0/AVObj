@@ -348,7 +348,18 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 		value:        function ()
 		{
 			var newObj = createFinal( this );
+
+			// PreInit gives the user a chance to define and configure the object before macro init's and base init fires.
 			newObj.preInit.apply( newObj );
+
+			// calls init on any predefined macro objects before calling objects user defined init method.
+			for( var i = 0, length = newObj._macroInit.length; i &lt; length; i++ )
+			{
+				var macroObjName = newObj._macroInit[i];
+				//newObj._macroInit[i]();
+				macroList[macroObjName].init.call( newObj, newObj._usedMacros[macroObjName], arguments );
+			}
+
 			newObj.init.apply( newObj, arguments );
 			return newObj;
 		},
@@ -508,13 +519,14 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 	 * @param {string} macroName - The name of the new macro you want to create.
 	 * @param {function=} operationBefore - The function to call when the macroName is defined.
 	 * @param {function=} operationAfter - The function to call when the macroName is defined and the class object has just been constructed.
+	 * @param {function=} operationInit - The function to call when the object is constructed (the word create() is called on the object right before the objects own init method is called).
 	 * @function  AVObjMacro
 	 */
-	AVObjMacro = function( macroName, operationBefore, operationAfter )
+	AVObjMacro = function( macroName, operationBefore, operationAfter, operationInit )
 	{
 		if ( macroList[macroName] == null )
 		{
-			macroList[macroName] = { before:operationBefore, after:operationAfter };
+			macroList[macroName] = { before:operationBefore, after:operationAfter, init:operationInit };
 		}
 		else
 		{
@@ -668,6 +680,10 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 					enumerable:   false,
 					configurable: false
 				},
+				_macroInit :
+				{
+					value : []
+				},
 				_usedMacros : {
 					value : macros,
 					writable : false,
@@ -689,9 +705,12 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 			{
 				for( macroName in macroList )
 				{
-					if ( macros[macroName] != null &amp;&amp; macroList[macroName].before != null )
+					if ( macros[macroName] != null )
 					{
-						macroList[macroName].before( newObjectProperties, macros[macroName] );
+						if ( macroList[macroName].before != null )
+						{
+							macroList[macroName].before( newObjectProperties, macros[macroName] );
+						}
 					}
 				}
 			}
@@ -732,9 +751,18 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 			{
 				for ( macroName in macroList )
 				{
-					if ( macros[macroName] != null &amp;&amp; macroList[macroName].after != null )
+					if ( macros[macroName] != null )
 					{
-						macroList[macroName].after( newObject, macros[macroName] );
+						if ( macroList[macroName].after != null )
+						{
+							macroList[macroName].after( newObject, macros[macroName] );
+						}
+
+						// We add the init methods to the _macroInit array object here for convenience.
+						if ( macroList[macroName].init != null )
+						{
+							newObject._macroInit.push( macroName );
+						}
 					}
 				}
 			}
@@ -978,13 +1006,13 @@ var AVObjMacro = function( macroName, operation ){};													// Defined belo
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#buildTree">buildTree</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildLayer">buildLayer</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sat Dec 27 2014 16:34:23 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Fri Jan 09 2015 01:19:24 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
