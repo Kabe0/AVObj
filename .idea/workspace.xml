@@ -1,119 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/lib/AVApp/Display/Assembler.js" line="121" />
+    <bookmark url="file://$PROJECT_DIR$/lib/AVApp/Display/Assembler.js" line="148" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e47a0f47-fac5-4b86-b47f-b850861a2f2c" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\AVObj.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Animator.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Animator.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\CheckMedia.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\CheckMedia.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\CodeDecorator.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\CodeDecorator.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Interperator.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Interperator.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\LayerTransitionBase.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\LayerTransitionBase.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\NodeOld.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Request.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\Request.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\View.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\ViewManager.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\angular-route.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\angular.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\angular.min.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Ian\Documents\Vertical Depth Studios\AVObject\Project\minified\condensed\AVObj.all.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/APage.html" afterPath="$PROJECT_DIR$/docs/APage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.AVApp.html" afterPath="$PROJECT_DIR$/docs/AV.AVApp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.Assembler.html" afterPath="$PROJECT_DIR$/docs/AV.App.Assembler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.Display.Template.html" afterPath="$PROJECT_DIR$/docs/AV.App.Display.Template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.Utilities.Assembler.html" afterPath="$PROJECT_DIR$/docs/AV.App.Utilities.Assembler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.Utilities.Component.html" afterPath="$PROJECT_DIR$/docs/AV.App.Utilities.Component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.Utilities.Node.html" afterPath="$PROJECT_DIR$/docs/AV.App.Utilities.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.UtilitiesAssembler.html" afterPath="$PROJECT_DIR$/docs/AV.App.UtilitiesAssembler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.App.html" afterPath="$PROJECT_DIR$/docs/AV.App.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.AppAssembler.html" afterPath="$PROJECT_DIR$/docs/AV.AppAssembler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.Utilities.AVApp.html" afterPath="$PROJECT_DIR$/docs/AV.Utilities.AVApp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.Utilities.Node.html" afterPath="$PROJECT_DIR$/docs/AV.Utilities.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.Utilities.Page.html" afterPath="$PROJECT_DIR$/docs/AV.Utilities.Page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.Utilities.Request.html" afterPath="$PROJECT_DIR$/docs/AV.Utilities.Request.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.Utilities.html" afterPath="$PROJECT_DIR$/docs/AV.Utilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AV.html" afterPath="$PROJECT_DIR$/docs/AV.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AVObj.html" afterPath="$PROJECT_DIR$/docs/AVObj.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AVObj.js.html" afterPath="$PROJECT_DIR$/docs/AVObj.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVObj.js" afterPath="$PROJECT_DIR$/lib/AVObj.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/AVObj_.html" afterPath="$PROJECT_DIR$/docs/AVObj_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/Animator.js" afterPath="$PROJECT_DIR$/lib/utils/Animator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/scripts/prettify/Apache-License-2.0.txt" afterPath="$PROJECT_DIR$/docs/scripts/prettify/Apache-License-2.0.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Assembler.html" afterPath="$PROJECT_DIR$/docs/Assembler.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Assembler.js.html" afterPath="$PROJECT_DIR$/docs/Assembler.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/Assembler.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/Assembler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/Assembler.min.js" afterPath="$PROJECT_DIR$/minified/Assembler.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/CheckMedia.html" afterPath="$PROJECT_DIR$/docs/CheckMedia.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/CheckMedia.js.html" afterPath="$PROJECT_DIR$/docs/CheckMedia.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/CheckMedia.js" afterPath="$PROJECT_DIR$/lib/utils/CheckMedia.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/CodeDecorator.CodeDecorator.html" afterPath="$PROJECT_DIR$/docs/CodeDecorator.CodeDecorator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/CodeDecorator.js.html" afterPath="$PROJECT_DIR$/docs/CodeDecorator.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/CodeDecorator.js" afterPath="$PROJECT_DIR$/lib/utils/CodeDecorator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Example.html" afterPath="$PROJECT_DIR$/Example.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Interpreter.js.html" afterPath="$PROJECT_DIR$/docs/Interpreter.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/Interpreter.min.js" afterPath="$PROJECT_DIR$/minified/Interpreter.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Layer.js.html" afterPath="$PROJECT_DIR$/docs/Layer.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/Layer.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/Layer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/Layer.min.js" afterPath="$PROJECT_DIR$/minified/Layer.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/LayerTransitionBase.js.html" afterPath="$PROJECT_DIR$/docs/LayerTransitionBase.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/LayerTransitionBase.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/LayerTransitionBase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Nod.html" afterPath="$PROJECT_DIR$/docs/Nod.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Node.html" afterPath="$PROJECT_DIR$/docs/Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Node.js.html" afterPath="$PROJECT_DIR$/docs/Node.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/Node.js" afterPath="$PROJECT_DIR$/lib/utils/Node.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/Node.min.js" afterPath="$PROJECT_DIR$/minified/Node.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/NodeOld.js.html" afterPath="$PROJECT_DIR$/docs/NodeOld.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/NodeOld.js" afterPath="$PROJECT_DIR$/lib/utils/NodeOld.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Page.html" afterPath="$PROJECT_DIR$/docs/Page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Request.html" afterPath="$PROJECT_DIR$/docs/Request.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Request.js.html" afterPath="$PROJECT_DIR$/docs/Request.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/utils/Request.js" afterPath="$PROJECT_DIR$/lib/utils/Request.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/U.Node.html" afterPath="$PROJECT_DIR$/docs/U.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Ut.Node.html" afterPath="$PROJECT_DIR$/docs/Ut.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/UtRequest.html" afterPath="$PROJECT_DIR$/docs/UtRequest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/UtiliNode.html" afterPath="$PROJECT_DIR$/docs/UtiliNode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilit.Node.html" afterPath="$PROJECT_DIR$/docs/Utilit.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/UtilitRequest.html" afterPath="$PROJECT_DIR$/docs/UtilitRequest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilities.Node.html" afterPath="$PROJECT_DIR$/docs/Utilities.Node.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilities.Page.html" afterPath="$PROJECT_DIR$/docs/Utilities.Page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilities.Request.html" afterPath="$PROJECT_DIR$/docs/Utilities.Request.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilities.UtilitiesNode.html" afterPath="$PROJECT_DIR$/docs/Utilities.UtilitiesNode.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Utilities.html" afterPath="$PROJECT_DIR$/docs/Utilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/UtilliRequest.html" afterPath="$PROJECT_DIR$/docs/UtilliRequest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/View.js.html" afterPath="$PROJECT_DIR$/docs/View.js.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/View.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/View.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/View.js_.html" afterPath="$PROJECT_DIR$/docs/View.js_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/View.min.js" afterPath="$PROJECT_DIR$/minified/View.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js" afterPath="$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minified/ViewManager.min.js" afterPath="$PROJECT_DIR$/minified/ViewManager.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_.html" afterPath="$PROJECT_DIR$/docs/_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular-route.js" afterPath="$PROJECT_DIR$/angular-route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular.js" afterPath="$PROJECT_DIR$/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.json" afterPath="$PROJECT_DIR$/config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/global.html#Template" afterPath="$PROJECT_DIR$/docs/global.html#Template" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/global.html#init" afterPath="$PROJECT_DIR$/docs/global.html#init" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/global.html" afterPath="$PROJECT_DIR$/docs/global.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.html" afterPath="$PROJECT_DIR$/docs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demos/inheritance.js" afterPath="$PROJECT_DIR$/demos/inheritance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/styles/jsdoc-default.css" afterPath="$PROJECT_DIR$/docs/styles/jsdoc-default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/scripts/prettify/lang-css.js" afterPath="$PROJECT_DIR$/docs/scripts/prettify/lang-css.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/scripts/linenumber.js" afterPath="$PROJECT_DIR$/docs/scripts/linenumber.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.css" afterPath="$PROJECT_DIR$/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/styles/prettify-jsdoc.css" afterPath="$PROJECT_DIR$/docs/styles/prettify-jsdoc.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/styles/prettify-tomorrow.css" afterPath="$PROJECT_DIR$/docs/styles/prettify-tomorrow.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/scripts/prettify/prettify.js" afterPath="$PROJECT_DIR$/docs/scripts/prettify/prettify.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing.html" afterPath="$PROJECT_DIR$/testing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AVObj.iws" />
@@ -142,10 +35,12 @@
       <file leaf-file-name="AVObj.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/AVObj.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15158" max-vertical-offset="16609">
-              <caret line="501" column="74" selection-start-line="501" selection-start-column="74" selection-end-line="501" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4800" max-vertical-offset="11745">
+              <caret line="474" column="4" selection-start-line="474" selection-start-column="4" selection-end-line="474" selection-end-column="4" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="e#13187#13216#0" expanded="false" />
+                <element signature="e#23352#23378#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -154,8 +49,8 @@
       <file leaf-file-name="Assembler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Assembler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="695" max-vertical-offset="2618">
-              <caret line="75" column="129" selection-start-line="75" selection-start-column="116" selection-end-line="75" selection-end-column="129" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2310">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -166,8 +61,8 @@
       <file leaf-file-name="Interpreter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="6086">
-              <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="5370">
+              <caret line="81" column="34" selection-start-line="81" selection-start-column="34" selection-end-line="81" selection-end-column="34" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -178,8 +73,8 @@
       <file leaf-file-name="Node.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/utils/Node.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="3315">
-              <caret line="42" column="124" selection-start-line="42" selection-start-column="124" selection-end-line="42" selection-end-column="124" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="2925">
+              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -187,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="View.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="View.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.45454547" vertical-offset="90" max-vertical-offset="930">
+              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -202,8 +97,8 @@
       <file leaf-file-name="ViewManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -214,8 +109,8 @@
       <file leaf-file-name="Layer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Layer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
+              <caret line="34" column="56" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="56" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -223,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Example.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Example.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Example.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45945945" vertical-offset="0" max-vertical-offset="1221">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="645">
+              <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -245,10 +140,10 @@
         <option value="$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js" />
         <option value="$PROJECT_DIR$/lib/AVApp/Display/Assembler.js" />
         <option value="$PROJECT_DIR$/lib/AVApp/Display/Layer.js" />
-        <option value="$PROJECT_DIR$/lib/AVApp/Display/View.js" />
         <option value="$PROJECT_DIR$/lib/utils/Node.js" />
-        <option value="$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js" />
         <option value="$PROJECT_DIR$/Example.html" />
+        <option value="$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js" />
+        <option value="$PROJECT_DIR$/lib/AVApp/Display/View.js" />
       </list>
     </option>
   </component>
@@ -260,10 +155,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1416" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -290,8 +183,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -306,7 +197,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
+              <option name="myItemId" value="AVObj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -316,21 +207,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="minified" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="AVObj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -344,25 +221,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="AVObj" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -380,6 +239,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,7 +253,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.lastSelected" value="watcher.settings" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -402,66 +263,10 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
       <method />
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
@@ -474,9 +279,31 @@
       <setting name="launchBrowser" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -507,19 +334,28 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -528,20 +364,6 @@
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -600,7 +422,13 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
@@ -619,23 +447,18 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
@@ -655,6 +478,41 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <list size="0" />
@@ -678,42 +536,43 @@
       <workItem from="1420437942003" duration="1280000" />
       <workItem from="1420587451335" duration="8254000" />
       <workItem from="1420771801739" duration="4421000" />
+      <workItem from="1420898351287" duration="2219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45947000" />
+    <option name="totallyTimeSpent" value="48166000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.125972" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16878475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.125972" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -825,6 +684,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -903,6 +764,8 @@
           <caret line="301" column="36" selection-start-line="301" selection-start-column="36" selection-end-line="301" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -981,6 +844,8 @@
           <caret line="301" column="36" selection-start-line="301" selection-start-column="36" selection-end-line="301" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1059,6 +924,8 @@
           <caret line="301" column="36" selection-start-line="301" selection-start-column="36" selection-end-line="301" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1137,6 +1004,8 @@
           <caret line="301" column="36" selection-start-line="301" selection-start-column="36" selection-end-line="301" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1155,10 +1024,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/AVObj.js">
+    <entry file="file://$PROJECT_DIR$/Example.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8279" max-vertical-offset="16609">
-          <caret line="501" column="74" selection-start-line="501" selection-start-column="74" selection-end-line="501" selection-end-column="74" />
+        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="645">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="5370">
+          <caret line="81" column="34" selection-start-line="81" selection-start-column="34" selection-end-line="81" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1167,28 +1044,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Assembler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="695" max-vertical-offset="2618">
-          <caret line="75" column="129" selection-start-line="75" selection-start-column="116" selection-end-line="75" selection-end-column="129" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Interpreter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="6086">
-          <caret line="79" column="34" selection-start-line="79" selection-start-column="34" selection-end-line="79" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/View.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1530" max-vertical-offset="2310">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1197,8 +1054,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/Layer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="56" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -1207,29 +1064,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/utils/Node.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="3315">
-          <caret line="42" column="124" selection-start-line="42" selection-start-column="124" selection-end-line="42" selection-end-column="124" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="2925">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/AVObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4800" max-vertical-offset="11745">
+          <caret line="474" column="4" selection-start-line="474" selection-start-column="4" selection-end-line="474" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#13187#13216#0" expanded="false" />
+            <element signature="e#23352#23378#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/ViewManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Example.html">
+    <entry file="file://$PROJECT_DIR$/lib/AVApp/Display/View.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45945945" vertical-offset="0" max-vertical-offset="1221">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.45454547" vertical-offset="90" max-vertical-offset="930">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
