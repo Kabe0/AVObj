@@ -57,9 +57,9 @@ using().within( AV.Utilities, function( $scope )
 
 	$scope.Node = AVObj.extend().prop(
 		{
-			_componentList : {},
+			_componentList: {},
 
-			preInit : function()
+			preInit: function ()
 			{
 				this._element = null;
 				this._components = [];
@@ -72,15 +72,18 @@ using().within( AV.Utilities, function( $scope )
 			 * @param {object} nodeAttributes
 			 * @constructor AV.App.Utilities.Node
 			 */
-			init : function( name, components, nodeAttributes )
+			init: function ( name, components, nodeAttributes )
 			{
 				this._element = ( typeof name == "object" ? name : document.createElement( name ) );
 				this._element._avNode = this;
 
 				if ( !components ) components = [];
 
+				// Pushing in some default mandatory components.
+				components.push( $scope.Attributes.create() );
+
 				// Loop through all the components defined and if array object, create, and if object add to the _components array.
-				for( var i = 0; i &lt; components.length; i++ )
+				for ( var i = 0; i &lt; components.length; i++ )
 				{
 					var component = components[i];
 
@@ -97,6 +100,14 @@ using().within( AV.Utilities, function( $scope )
 				}
 			},
 
+			element :
+			{
+				get : function()
+				{
+					return this._element;
+				}
+			},
+
 			//region Child Modifications
 
 			push : function( node )
@@ -109,6 +120,11 @@ using().within( AV.Utilities, function( $scope )
 				this._element.removeChild( node._element );
 			},
 
+			removeSelf : function()
+			{
+				this._element.parentElement.removeChild( this._element );
+			},
+
 			children :
 			{
 				get : function()
@@ -118,7 +134,14 @@ using().within( AV.Utilities, function( $scope )
 
 					for( var i = 0, length = children.length; i &lt; length; i++ )
 					{
-						childNodes.push( children[i] );
+						if ( childNodes[i]._avNode )
+						{
+							childNodes.push( childNodes[i]._avNode );
+						}
+						else
+						{
+							childNodes.push( $scope.Node.create( childNodes[i] ) );
+						}
 					}
 
 					return childNodes;
@@ -128,9 +151,11 @@ using().within( AV.Utilities, function( $scope )
 			clear : function()
 			{
 				var children = this._element.childNodes;
+
+				this._element.innerHTML = "";
 				for( var i = children.length; i--; )
 				{
-					children[i].pop();
+					this._element.removeChild( children[i] );
 				}
 			},
 
@@ -157,6 +182,9 @@ using().within( AV.Utilities, function( $scope )
 				if ( !this._componentsMap[ component._componentName ] ) this._componentsMap[ component._componentName ] = [];
 
 				this._componentsMap[ component._componentName].push( component );
+
+				component.setParent( this );
+				component.start( this );
 			},
 
 			createComponent : function( componentName, properties )
@@ -164,7 +192,11 @@ using().within( AV.Utilities, function( $scope )
 				var object = this._componentList[componentName];	// Stored so that the scope can be referenced later.
 				if ( object )										// We don't want to bother creating the object if it is not registered.
 				{
-					this._components.push( object.create.apply( object, properties ) );
+					var newObject = object.create.apply( object, properties );
+
+					this._components.push( newObject );
+					newObject.setParent( this );
+					newObject.start( this );
 				}
 			}
 
@@ -172,47 +204,54 @@ using().within( AV.Utilities, function( $scope )
 		}
 	);
 
-	var Node = $scope.Node;
-
-	var ComponentTest = $scope.ComponentTest = AVObj.extend(  ).prop(
-		{
-			init : function()
-			{
-
-			}
-		});
-
-	var Component = $scope.Component = AVObj.extend( { configComponent : "BaseComponent" } ).prop(
+	$scope.Component = AVObj.extend( { configComponent : "BaseComponent" } ).prop(
 		{
 			preInit : function()
 			{
-				this.storeValue = 0;
-			},
-			/**
-			 *
-			 * @param value
-			 * @param parentNode the object that this component belongs to.
-			 * @constructor AV.App.Utilities.Component
-			 */
-			init : function( value )
-			{
-				this.storeValue = value;
-				console.log("Base Component Init " + value );
+				this.node = null;
 			},
 
-			start : function( parentNode )
+			setParent : function( parentNode )
 			{
-
+				this.node = parentNode;
 			},
 
-			grabValue : function()
+			start : function( )
 			{
-				return this.storeValue;
 			}
 		}
 	);
 
-	var node = $scope.Node.create( "div", [ $scope.Component.create("500"), $scope.Component.create("9000") ] );
+	$scope.Attributes = $scope.Component.extend(( { configComponent : "Attributes" }) ).prop(
+		{
+			preInit : function()
+			{
+			},
+
+			start : function()
+			{
+			},
+
+			attribute : function( name, newValue )
+			{
+				if ( newValue )
+				{
+					return this.node.element.setAttribute( name, newValue )
+				}
+				else
+				{
+					return this.node.element.getAttribute( name );
+				}
+			},
+
+			removeAttribute : function( name )
+			{
+				//this.nodeAttributes.removeNamedItem( name );
+			}
+		}
+	);
+
+	//var node = $scope.Node.create( "div", [ $scope.Component.create("500"), $scope.Component.create("9000") ] );
 
 });</code></pre>
         </article>
@@ -224,13 +263,13 @@ using().within( AV.Utilities, function( $scope )
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Component.html">Component</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildLayer">buildLayer</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li><li><a href="global.html#View">View</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="AV.App.Display.Template.html">Template</a></li><li><a href="AV.App.Utilities.Assembler.html">Assembler</a></li><li><a href="AV.App.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Node.html">Node</a></li><li><a href="AV.Utilities.Page.html">Page</a></li><li><a href="AV.Utilities.Request.html">Request</a></li><li><a href="AVObj.html">AVObj</a></li><li><a href="CodeDecorator.CodeDecorator.html">CodeDecorator</a></li></ul><h3>Namespaces</h3><ul><li><a href="AV.html">AV</a></li><li><a href="AV.App.html">App</a></li><li><a href="AV.Utilities.html">Utilities</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AVObjMacro">AVObjMacro</a></li><li><a href="global.html#buildLayer">buildLayer</a></li><li><a href="global.html#buildTemplate">buildTemplate</a></li><li><a href="global.html#checkQueryStates">checkQueryStates</a></li><li><a href="global.html#convertToForm">convertToForm</a></li><li><a href="global.html#convertToString">convertToString</a></li><li><a href="global.html#enable">enable</a></li><li><a href="global.html#fireFunction">fireFunction</a></li><li><a href="global.html#getLayerInstruct">getLayerInstruct</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#Interpreter">Interpreter</a></li><li><a href="global.html#kill">kill</a></li><li><a href="global.html#LayerTransitionBase">LayerTransitionBase</a></li><li><a href="global.html#namespace">namespace</a></li><li><a href="global.html#pushLayer">pushLayer</a></li><li><a href="global.html#Template">Template</a></li><li><a href="global.html#usingNamespace">usingNamespace</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Fri Jan 09 2015 01:19:24 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Jan 12 2015 22:46:20 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

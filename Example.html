@@ -20,6 +20,12 @@
           //  var Testing = Node.create( "p" );
 
             layer = Layer.create( HTMLParser.parseText( "<k cm-BaseComponent='hiworld,55,{penguins}' value='frog' name='tree'>Special node will not appear</k><p>This is actually being parsed so this is kind of amazing in a way!</p><p>Welcome to more testing text.</p><p>Hello world!</p>" ) );
+
+            var attributesLayer = layer.getComponent( "Attributes" );
+            console.log(attributesLayer);
+            attributesLayer.attribute( "cheese", "cheeseburger!" );
+
+            console.log(layer.element);
         });
 
     </script>
@@ -31,7 +37,7 @@
 </script>
 
 <view id="MainView">
-
+<p>Hello world of cake!</p><k>special element</k>
 </view>
 
 </body>
