@@ -15,29 +15,40 @@
 
         var layer = null;
 
-                using( AV.App.Display, AV.Utilities ).on( function( Layer, HTMLParser )
+                using( AV.App.Display, AV.Utilities ).on( function( Layer, HTMLParser, ViewManager )
         {
-          //  var Testing = Node.create( "p" );
 
-            layer = Layer.create( HTMLParser.parseText( "<k cm-BaseComponent='hiworld,55,{penguins}' value='frog' name='tree'>Special node will not appear</k><p>This is actually being parsed so this is kind of amazing in a way!</p><p>Welcome to more testing text.</p><p>Hello world!</p>" ) );
+            AVObj.extend( { initOnPageLoad : true } ).prop(
+                    {
+                        init : function()
+                        {
+                            //  var Testing = Node.create( "p" );
 
-            var attributesLayer = layer.getComponent( "Attributes" );
-            console.log(attributesLayer);
-            attributesLayer.attribute( "cheese", "cheeseburger!" );
+                            layer = Layer.create( HTMLParser.parseText( "<k cm-BaseComponent='hiworld,55,{penguins}' value='frog' name='tree'>Special node will not appear</k><p>This is actually being parsed so this is kind of amazing in a way!</p><p>Welcome to more testing text.</p><p>Hello world!</p>" ) );
 
-            console.log(layer.element);
+                            // var attributesLayer = layer.getComponent( "Attributes" );
+                            // console.log(attributesLayer);
+                            // attributesLayer.attribute( "cheese", "cheeseburger!" );
+
+                            ViewManager.instance.grabView( "SuperView" ).pushLayer( layer );
+
+                            //console.log(layer.element);
+                        }
+                    }
+            );
+
         });
 
     </script>
 </head>
 <body>
 <div id="cale"></div>
-<script type="text/javascript">
-    document.getElementById("cale").appendChild( layer._element );
-</script>
+<view id="SuperView">
+
+</view>
 
 <view id="MainView">
-<p>Hello world of cake!</p><k>special element</k>
+<p>Hello world of cake!</p><k>special element</k><p>Testing more text <strong>for</strong> the world of awesome!</p>
 </view>
 
 </body>
